@@ -1,14 +1,11 @@
 "use client"
-
-import { Navbar } from "@/components/ui/navbar";
+import { ModeToggle } from "@/components/ui/mode-toggle";
 
 export default function Home() {
   return (
     <>
-    <Navbar></Navbar>
-    <div className="bg-[url(/owlivia_large_bg.png)]">
-      Hello
-    </div>
+    Home page
+    <ModeToggle/>
     </>
   );
 }

@@ -65,7 +65,7 @@ const defaultNavigationLinks = [
 
 export const Navbar = React.forwardRef((
   {
-    className = "bg-[#003366]!",
+    className,
     logo,
     logoHref = "#",
     navigationLinks = defaultNavigationLinks,

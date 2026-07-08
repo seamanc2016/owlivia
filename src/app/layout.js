@@ -1,15 +1,17 @@
-import { Inter, Cormorant } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider"
+import { Inter, Cormorant_Garamond } from "next/font/google";
+import { Navbar } from "@/components/ui/navbar";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-sans",
+const fontSans = Inter({
   subsets: ["latin"],
+  variable: "--font-sans",
 });
 
-const cormorant = Cormorant({
-    subsets: ["latin"],
-})
-
+const fontSerif = Cormorant_Garamond({
+  subsets: ["latin"],
+  variable: "--font-serif",
+});
 
 
 export const metadata = {
@@ -21,9 +23,20 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${inter.variable}  h-full antialiased`}
+      className={`${fontSans.variable} ${fontSerif.variable}  h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Navbar/>
+            {children}
+          </ThemeProvider>
+      </body>
     </html>
   );
 }
