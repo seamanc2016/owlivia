@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/navigation-menu"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { cn } from "@/lib/utils"
+import SignInForm from "./sign-in-form";
 
 // Simple logo component for the navbar
 const Logo = (props) => {
@@ -70,7 +71,7 @@ export const Navbar = React.forwardRef((
     logoHref = "#",
     navigationLinks = defaultNavigationLinks,
     signInText = "Sign In",
-    signInHref = "#signin",
+    signInHref,
     onSignInClick,
     ...props
   },
@@ -190,17 +191,10 @@ export const Navbar = React.forwardRef((
         </div>
         {/* Right side */}
         <div className="flex items-center gap-3">
-          <Button
-            className="text-sm font-medium hover:bg-accent hover:text-accent-foreground"
-            onClick={e => {
-              e.preventDefault()
-              if (onSignInClick) {
-                onSignInClick()
-              }
-            }}
-            size="sm">
-            {signInText}
-          </Button>
+          <SignInForm
+            triggerText={signInText}
+            triggerClassName="text-sm font-medium hover:bg-accent hover:text-accent-foreground"
+          />
         </div>
       </div>
     </header>

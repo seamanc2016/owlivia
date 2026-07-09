@@ -4,6 +4,7 @@ import * as React from "react"
 import { MessageSquare } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import SignInForm from "./sign-in-form"
 
 export const Hero = React.forwardRef(
   (
@@ -23,7 +24,7 @@ export const Hero = React.forwardRef(
       <section
         ref={ref}
         className={cn(
-          "relative min-h-[calc(100vh-4rem)] w-full overflow-hidden bg-[#d9ecff]",
+          "relative min-h-[calc(100vh-4rem)] w-full overflow-hidden bg-secondary",
           className
         )}
         {...props}
@@ -45,7 +46,7 @@ export const Hero = React.forwardRef(
               className="mb-6 block w-64 sm:w-80 md:w-[28rem] lg:hidden"
             />
 
-            <h1 className="whitespace-pre-line font-serif text-5xl leading-none text-[#003366] sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
+            <h1 className="whitespace-pre-line font-serif text-5xl leading-none text-primary sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
               {title}
             </h1>
 
@@ -53,13 +54,11 @@ export const Hero = React.forwardRef(
               {description}
             </p>
 
-            <Button
-              className="mt-8 w-full max-w-sm bg-[#003366] hover:bg-[#003366]/90 sm:max-w-md md:max-w-lg lg:max-w-md"
-              onClick={onButtonClick}
-            >
-              <MessageSquare className="mr-2 h-4 w-4" />
-              {buttonText}
-            </Button>
+            <SignInForm
+              triggerText={buttonText}
+              triggerClassName="mt-8 w-full max-w-sm bg-primary hover:bg-primary/90 sm:max-w-md md:max-w-lg lg:max-w-md"
+              triggerIcon={<MessageSquare className="size-4" />}
+            />
           </div>
         </div>
       </section>
