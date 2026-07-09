@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import Link from "next/link"
 
 const SignInForm = ({
   triggerText,
@@ -58,9 +59,13 @@ const SignInForm = ({
         </div>
       </div>
 
-      <DialogFooter>
-        <Button className="w-full">Sign In</Button>
-      </DialogFooter>
+    <DialogFooter>
+        <Button asChild className="w-full">
+            <Link href="/chat">
+            Sign In
+            </Link>
+        </Button>
+    </DialogFooter>
 
       <p className="text-center text-muted-foreground text-sm">
         Don't have an account?&nbsp;
