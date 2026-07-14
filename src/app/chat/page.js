@@ -59,19 +59,22 @@ const ChatPage = () => {
       <div className="h-screen">
         <div className="flex flex-col h-full bg-primary-foreground">
           {/* Top bar*/}
-          <div className="bg-primary text-primary-foreground flex justify-between items-center p-2">
-            <div className="font-bold text-xl">Owlivia</div>
-            <Button className="bg-transparent">
-              <Sidebar />
-            </Button>
+          <div className="bg-primary text-primary-foreground">
+            <div className="mx-auto flex max-w-5xl items-center justify-between p-2">
+              <div className="text-xl font-bold">Owlivia</div>
+
+              <Button className="bg-transparent">
+                <Sidebar />
+              </Button>
+            </div>
           </div>
           {/* Centered content*/}
           <div className="flex flex-col h-full items-center min-h-0 md:max-w-5xl w-full bg-primary-foreground mx-auto">
             <Conversation className={
               messages.length === 0 ?
-              "flex-none bg-primary-foreground w-full min-h-0 my-auto":
-              "bg-primary-foreground w-full min-h-0 my-auto h-full"
-              }>
+                "flex-none bg-primary-foreground w-full min-h-0 my-auto" :
+                "bg-primary-foreground w-full min-h-0 my-auto h-full"
+            }>
               <ConversationContent>
                 {messages.length === 0 ? (
                   <ConversationEmptyState
@@ -167,6 +170,10 @@ const ChatPage = () => {
                 className="absolute bottom-1 right-1 rounded-full"
               />
             </PromptInput>
+
+            <p class="text-xs text-primary-foreground text-center py-1 hidden lg:block">
+              Owlivia is AI and can make mistakes. Please double check all answers provided
+            </p>
           </div>
 
         </div>
