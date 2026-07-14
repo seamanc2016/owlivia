@@ -26,7 +26,9 @@ import { Suggestion, Suggestions } from "@/components/ai-elements/suggestion";
 import { useState } from "react";
 import { useChat } from "@ai-sdk/react";
 import { Button } from "@/components/ui/button";
-import { Sidebar } from "lucide-react";
+import { LogOut, Sidebar } from "lucide-react";
+import Link from "next/link";
+
 
 
 const suggestions = [
@@ -63,8 +65,8 @@ const ChatPage = () => {
             <div className="mx-auto flex max-w-5xl items-center justify-between p-2">
               <div className="text-xl font-bold">Owlivia</div>
 
-              <Button className="bg-transparent">
-                <Sidebar />
+              <Button className="bg-destructive hover:bg-primary-foreground hover:text-primary" asChild>
+                <Link href="/"><LogOut/> Logout</Link>
               </Button>
             </div>
           </div>
@@ -171,7 +173,7 @@ const ChatPage = () => {
               />
             </PromptInput>
 
-            <p class="text-xs text-primary-foreground text-center py-1 hidden lg:block">
+            <p className="text-xs text-primary-foreground text-center py-1 hidden lg:block">
               Owlivia is AI and can make mistakes. Please double check all answers provided
             </p>
           </div>
