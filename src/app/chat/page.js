@@ -17,14 +17,16 @@ import {
   MessageContent,
   MessageResponse,
 } from "@/components/ai-elements/message";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/ui/avatar";
 import { Suggestion, Suggestions } from "@/components/ai-elements/suggestion";
 import { useState } from "react";
 import { useChat } from "@ai-sdk/react";
 import { Button } from "@/components/ui/button";
 import { Sidebar } from "lucide-react";
-
-
-
 
 
 const suggestions = [
@@ -55,7 +57,7 @@ const ChatPage = () => {
 
   return (
     <>
-      <div className="h-screen bg-blue-200">
+      <div className="h-screen">
         <div className="flex flex-col h-full justify-between">
           {/* Top bar*/}
           <div className="bg-primary text-primary-foreground flex justify-between items-center p-2">
@@ -65,15 +67,15 @@ const ChatPage = () => {
             </Button>
           </div>
           {/* Centered content*/}
-          <div className="flex flex-col bg-red-200 h-full items-center">
-            <Conversation className="bg-green-300 w-full">
-              <ConversationContent className="h-full">
+          <div className="flex flex-col h-full items-center min-h-0">
+            <Conversation className="bg-primary-foreground w-full flex-1 min-h-0">
+              <ConversationContent>
                 {messages.length === 0 ? (
                   <ConversationEmptyState
                     icon={
                       <img
                         src="/logo_fau_blue.png"
-                        alt="Owlivia Thumbs Up"
+                        alt="Owlivia Logo"
                         className="size-30 md:size-50 "
                       />}
                     title="Start a conversation"
@@ -82,20 +84,47 @@ const ChatPage = () => {
                 ) : (
                   messages.map((message) => (
                     <Message from={message.role} key={message.id}>
-                      <MessageContent>
-                        {message.parts.map((part, i) => {
-                          switch (part.type) {
-                            case "text": // we don't use any reasoning or tool calls in this example
-                              return (
-                                <MessageResponse key={`${message.id}-${i}`}>
-                                  {part.text}
-                                </MessageResponse>
-                              );
-                            default:
+                      <div className="flex items-end gap-x-2">
+                        {message.role === "assistant" && (
+                          <Avatar className="size-8 shrink-0">
+                            <AvatarImage
+                              src="/owlivia_avatar.png"
+                              alt="Owlivia"
+                            />
+                            <AvatarFallback>O</AvatarFallback>
+                          </Avatar>
+                        )}
+
+                        <MessageContent>
+                          {message.parts.map((part, i) => {
+                            if (part.type !== "text") {
                               return null;
-                          }
-                        })}
-                      </MessageContent>
+                            }
+
+                            return (
+                              <MessageResponse key={`${message.id}-${i}`}>
+                                {part.text}
+                              </MessageResponse>
+                            );
+                          })}
+                        </MessageContent>
+                      </div>
+                      <div className={
+                        message.role === "assistant" ?
+                          "flex gap-1 text-xs text-muted-foreground mr-auto" :
+                          "flex gap-1 text-xs text-muted-foreground ml-auto"
+                      }>
+                        <span className="font-medium">
+                          {message.role === "assistant" ? "Owlivia" : "You"}
+                        </span>
+
+                        <span>
+                          {new Date().toLocaleTimeString([], {
+                            hour: "numeric",
+                            minute: "2-digit",
+                          })}
+                        </span>
+                      </div>
                     </Message>
                   ))
                 )}
@@ -104,7 +133,7 @@ const ChatPage = () => {
               <ConversationScrollButton />
             </Conversation>
           </div>
-          <div className="bg-purple-200 p-2">
+          <div className="p-2">
             {messages.length === 0 && (
               <Suggestions className="overflow-x-auto">
                 {suggestions.map((suggestion) => (
@@ -116,18 +145,17 @@ const ChatPage = () => {
                   />
                 ))}
               </Suggestions>
-
             )}
 
             <PromptInput
               onSubmit={handleSubmit}
-              className="my-2 w-full max-w-2xl mx-auto relative"
+              className="my-2 w-full max-w-2xl mx-auto relative bg-primary-foreground"
             >
               <PromptInputTextarea
                 value={input}
                 placeholder="Type something..."
                 onChange={(e) => setInput(e.currentTarget.value)}
-                className="pr-12 min-h-0 bg-amber-300"
+                className="pr-12 min-h-0 bg-muted"
               />
               <PromptInputSubmit
                 status={status === "streaming" ? "streaming" : "ready"}
