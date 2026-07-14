@@ -39,7 +39,6 @@ const suggestions = [
 
 const ChatPage = () => {
   const [input, setInput] = useState("");
-  const [state, setState] = useState("default")
   const { id, messages, sendMessage, status } = useChat();
 
   console.log(messages);
@@ -58,7 +57,7 @@ const ChatPage = () => {
   return (
     <>
       <div className="h-screen">
-        <div className="flex flex-col h-full justify-between">
+        <div className="flex flex-col h-full bg-primary-foreground">
           {/* Top bar*/}
           <div className="bg-primary text-primary-foreground flex justify-between items-center p-2">
             <div className="font-bold text-xl">Owlivia</div>
@@ -67,8 +66,12 @@ const ChatPage = () => {
             </Button>
           </div>
           {/* Centered content*/}
-          <div className="flex flex-col h-full items-center min-h-0">
-            <Conversation className="bg-primary-foreground w-full flex-1 min-h-0">
+          <div className="flex flex-col h-full items-center min-h-0 md:max-w-5xl w-full bg-primary-foreground mx-auto">
+            <Conversation className={
+              messages.length === 0 ?
+              "flex-none bg-primary-foreground w-full min-h-0 my-auto":
+              "bg-primary-foreground w-full min-h-0 my-auto h-full"
+              }>
               <ConversationContent>
                 {messages.length === 0 ? (
                   <ConversationEmptyState
@@ -133,7 +136,7 @@ const ChatPage = () => {
               <ConversationScrollButton />
             </Conversation>
           </div>
-          <div className="p-2">
+          <div className="py-2 md:mx-auto">
             {messages.length === 0 && (
               <Suggestions className="overflow-x-auto">
                 {suggestions.map((suggestion) => (
@@ -146,10 +149,11 @@ const ChatPage = () => {
                 ))}
               </Suggestions>
             )}
-
+          </div>
+          <div className="bg-primary px-2">
             <PromptInput
               onSubmit={handleSubmit}
-              className="my-2 w-full max-w-2xl mx-auto relative bg-primary-foreground"
+              className="my-2 w-full max-w-5xl mx-auto relative rounded-full bg-primary-foreground"
             >
               <PromptInputTextarea
                 value={input}
@@ -163,11 +167,8 @@ const ChatPage = () => {
                 className="absolute bottom-1 right-1 rounded-full"
               />
             </PromptInput>
-
-            {/* <p className="text-xs text-center">
-            Owlivia is AI and can make mistakes. Please double check all answers provided.
-          </p> */}
           </div>
+
         </div>
       </div>
     </>
