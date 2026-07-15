@@ -1,44 +1,30 @@
-import {
-  createUIMessageStream,
-  createUIMessageStreamResponse,
-} from "ai";
+import { google } from "@ai-sdk/google";
+import { convertToModelMessages, streamText } from "ai";
 
 export async function POST(request) {
   try {
     const body = await request.json();
     const messages = body.messages ?? [];
 
-    const stream = createUIMessageStream({
-      execute({ writer }) {
-        const textId = crypto.randomUUID();
+    const result = streamText({
+      model: google("gemini-3.1-flash-lite"),
 
-        writer.write({
-          type: "text-start",
-          id: textId,
-        });
+      system: `
+        You are Owlivia, an FAU STEM graduate academic advising assistant.
 
-        writer.write({
-          type: "text-delta",
-          id: textId,
-          delta: "This is a generic response from the chat endpoint. This is a generic response from the chat endpoint. This is a generic response from the chat endpoint. This is a generic response from the chat endpoint.This is a generic response from the chat endpoint.This is a generic response from the chat endpoint.This is a generic response from the chat endpoint.",
-        });
+        Give clear, concise, and helpful answers.
 
-        writer.write({
-          type: "text-end",
-          id: textId,
-        });
-      },
+        Do not invent university policies, deadlines, degree requirements,
+        forms, or procedures.
 
-      onError(error) {
-        console.error("Chat stream error:", error);
-        return "Something went wrong while generating the response.";
-      },
+        When the provided information is insufficient, say that you do not
+        have enough information and recommend contacting an academic advisor.
+      `,
+
+      messages: await convertToModelMessages(messages),
     });
 
-    return createUIMessageStreamResponse({
-      status: 200,
-      stream,
-    });
+    return result.toUIMessageStreamResponse();
   } catch (error) {
     console.error("Chat route error:", error);
 
