@@ -28,6 +28,7 @@ import { useChat } from "@ai-sdk/react";
 import { Button } from "@/components/ui/button";
 import { LogOut, Sidebar } from "lucide-react";
 import Link from "next/link";
+import { ChatNavbar } from "@/components/ui/chat-navbar";
 
 
 
@@ -61,15 +62,8 @@ const ChatPage = () => {
       <div className="h-screen">
         <div className="flex flex-col h-full bg-primary-foreground">
           {/* Top bar*/}
-          <div className="bg-primary text-primary-foreground">
-            <div className="mx-auto flex max-w-5xl items-center justify-between p-2">
-              <div className="text-xl font-bold">Owlivia</div>
-
-              <Button className="bg-destructive hover:bg-primary-foreground hover:text-primary" asChild>
-                <Link href="/"><LogOut/> Logout</Link>
-              </Button>
-            </div>
-          </div>
+          <ChatNavbar />
+          
           {/* Centered content*/}
           <div className="flex flex-col h-full items-center min-h-0 md:max-w-5xl w-full bg-primary-foreground mx-auto">
             <Conversation className={

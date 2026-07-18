@@ -1,6 +1,5 @@
 import { ThemeProvider } from "@/components/theme-provider"
 import { Inter, Cormorant_Garamond } from "next/font/google";
-import { Navbar } from "@/components/ui/navbar";
 import "./globals.css";
 
 const fontSans = Inter({
@@ -33,7 +32,6 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar/>
           {children}
         </ThemeProvider>
       </body>
