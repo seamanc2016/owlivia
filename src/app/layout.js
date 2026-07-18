@@ -26,14 +26,14 @@ export default function RootLayout({ children }) {
       className={`${fontSans.variable} ${fontSerif.variable}  h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">
+      <body className="h-screen flex flex-col">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          {/* <Navbar className="static" /> */}
+          <Navbar/>
           {children}
         </ThemeProvider>
       </body>

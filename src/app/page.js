@@ -5,7 +5,7 @@ import { Hero } from "@/components/ui/hero";
 export default function Home() {
   return (
     <>
-    <section className="hero">
+    <section className="hero h-full">
       <Hero
         title={"MEET\nOWLIVIA"}
         description="The Advising Assistant That Never Clocks Out. Get quick answers about FAU advising, deadlines, forms, and academic resources."
