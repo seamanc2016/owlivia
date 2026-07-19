@@ -23,7 +23,7 @@ import {
   AvatarImage,
 } from "@/components/ui/avatar";
 import { Suggestion, Suggestions } from "@/components/ai-elements/suggestion";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useChat } from "@ai-sdk/react";
 import { Button } from "@/components/ui/button";
 import { LogOut, Sidebar } from "lucide-react";
@@ -43,8 +43,7 @@ const suggestions = [
 const ChatPage = () => {
   const [input, setInput] = useState("");
   const { id, messages, sendMessage, status } = useChat();
-
-  console.log(messages);
+  const messageTimestamps = useRef({});
 
   const handleSubmit = (message) => {
     if (message.text.trim()) {
@@ -57,13 +56,20 @@ const ChatPage = () => {
     sendMessage({ text: suggestion });
   };
 
+
+  messages.forEach((message) => {
+    if (!messageTimestamps.current[message.id]) {
+      messageTimestamps.current[message.id] = new Date();
+    }
+  });
+
   return (
     <>
       <div className="h-screen">
         <div className="flex flex-col h-full bg-primary-foreground">
           {/* Top bar*/}
           <ChatNavbar />
-          
+
           {/* Centered content*/}
           <div className="flex flex-col h-full items-center min-h-0 md:max-w-5xl w-full bg-primary-foreground mx-auto">
             <Conversation className={
@@ -111,17 +117,22 @@ const ChatPage = () => {
                           })}
                         </MessageContent>
                       </div>
-                      <div className={
-                        message.role === "assistant" ?
-                          "flex gap-1 text-xs text-muted-foreground mr-auto" :
-                          "flex gap-1 text-xs text-muted-foreground ml-auto"
-                      }>
+
+                      <div
+                        className={
+                          message.role === "assistant"
+                            ? "mr-auto flex gap-1 text-xs text-muted-foreground"
+                            : "ml-auto flex gap-1 text-xs text-muted-foreground"
+                        }
+                      >
                         <span className="font-medium">
                           {message.role === "assistant" ? "Owlivia" : "You"}
                         </span>
 
                         <span>
-                          {new Date().toLocaleTimeString([], {
+                          {messageTimestamps.current[
+                            message.id
+                          ]?.toLocaleTimeString([], {
                             hour: "numeric",
                             minute: "2-digit",
                           })}
