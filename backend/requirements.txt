@@ -6,3 +6,9 @@ httpx==0.28.1
 pytest==8.4.1
 pandas
 scikit-learn
+numpy
+lancedb
+sentence-transformers
+torch
+transformers
+accelerate

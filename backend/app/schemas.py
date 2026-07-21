@@ -41,7 +41,7 @@ class ChatResponse(BaseModel):
     session_id: UUID
     answer: str
     sources: list[Source]
-    confidence_status: Literal["prototype", "low", "medium", "high"]
+    confidence_status: Literal["low", "medium", "high"]
     retrieval_mode: Literal["placeholder", "connected"]
     escalation_recommended: bool = False
 

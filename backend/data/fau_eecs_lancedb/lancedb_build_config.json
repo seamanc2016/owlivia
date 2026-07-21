@@ -1,0 +1,23 @@
+{
+  "scraper_output_dir": "DepCourseInfo",
+  "db_dir": "DepCourseInfo\\fau_eecs_lancedb",
+  "table_name": "fau_eecs_resources",
+  "id_column": "doc_id",
+  "text_column": "text",
+  "bm25_text_column": "bm25_text",
+  "vector_column": "vector",
+  "embedding_model_name": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_dimension": 384,
+  "embed_batch_size": 32,
+  "normalize_embeddings": true,
+  "chunk_size_words": 350,
+  "chunk_overlap_words": 60,
+  "create_fts_index": true,
+  "create_vector_index": false,
+  "vector_metric": "cosine",
+  "record_count": 1862,
+  "source_file_count": 301,
+  "course_record_count": 545,
+  "external_link_record_count": 805,
+  "built_at_unix": 1781475877.0157533
+}
