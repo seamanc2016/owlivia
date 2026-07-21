@@ -1,55 +1,121 @@
-# Owlivia Week 3 Backend Scaffold
+# Owlivia Backend
 
-This FastAPI scaffold refines the Week 2 routes and defines stable contracts for the retrieval pipeline, frontend, Supabase, and the eventual LLM.
+The Owlivia backend is a FastAPI service that answers FAU EECS advising questions using a connected RAG pipeline.
 
-## Routes
+It retrieves relevant department documents from LanceDB, reranks the results, generates a grounded answer with Qwen, and returns supporting sources to the frontend.
 
-| Method | Route | Purpose | Authentication |
-|---|---|---|---|
-| `GET` | `/api/health` | Report backend and integration readiness | No |
-| `POST` | `/api/chat` | Validate a question and return a prototype sourced response | Bearer token |
-| `GET` | `/api/auth/verify` | Validate the current prototype token format | Bearer token |
-| `POST` | `/api/feedback` | Validate feedback and return its future database shape | Bearer token |
+## Features
 
-The prototype accepts any nonempty `Bearer` token. Supabase verification is not connected yet.
+- FastAPI backend
+- LanceDB document retrieval
+- Dense and full-text search
+- Weighted reciprocal-rank fusion
+- Intent-aware reranking
+- Exact course-code matching
+- Qwen answer generation
+- Grounding checks for numbers and course codes
+- Source citations, confidence, and escalation status
+- Automated API and retrieval tests
 
-## Run on Windows PowerShell
+## Setup
+
+From the repository root:
 
 ```powershell
+cd backend
 python -m venv .venv
-.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
 Copy-Item .env.example .env
-uvicorn app.main:app --reload
 ```
 
-Open `http://127.0.0.1:8000/docs` to test the API. In Swagger, click **Authorize** and enter `Bearer week3-prototype-token`.
-
-## Run tests
+## Run the Backend
 
 ```powershell
-pytest -q
+python -m uvicorn app.main:app --reload
 ```
 
-## Chat contract
+The backend runs at:
 
-Example request:
+```text
+http://127.0.0.1:8000
+```
+
+Swagger API documentation:
+
+```text
+http://127.0.0.1:8000/docs
+```
+
+For protected routes, use:
+
+```text
+Bearer week3-prototype-token
+```
+
+## Main Routes
+
+| Method | Route | Purpose |
+|---|---|---|
+| `GET` | `/api/health` | Check backend status |
+| `GET` | `/api/auth/verify` | Verify the prototype token |
+| `POST` | `/api/chat` | Retrieve sources and answer a question |
+| `POST` | `/api/feedback` | Submit response feedback |
+
+## Example Chat Request
 
 ```json
 {
-  "question": "What are the graduate credit requirements?",
-  "session_id": null,
+  "question": "What are the prerequisites for CAP 4630?",
   "top_k": 5
 }
 ```
 
-The response returns `response_id`, `session_id`, `answer`, `sources`, `confidence_status`, `retrieval_mode`, and `escalation_recommended`. Each source includes a document ID, title, optional URL/category/excerpt/update date, and relevance score.
+The response includes:
 
-## Integration handoff
+- The generated answer
+- Retrieved FAU EECS sources
+- Confidence status
+- Retrieval mode
+- Escalation recommendation
 
-- Retrieval: replace the body of `app.services.retrieve_advising_context` and preserve its inputs and output fields.
-- Frontend: set `ALLOWED_ORIGINS` to the frontend URL and consume the documented response fields.
-- Authentication: replace `app.dependencies.get_current_user_id` with Supabase JWT verification.
-- Persistence: use `docs/database_schema.sql` when the Supabase project is ready.
+Example answer:
 
-The current retrieval, generation, authentication, and persistence behavior is intentionally mocked. The API contracts and validation can be tested now without external credentials.
+```text
+The prerequisite for CAP 4630 is COP 3530.
+```
+
+## RAG Pipeline
+
+Each question goes through:
+
+1. Query classification and expansion
+2. Dense and full-text retrieval
+3. Weighted reciprocal-rank fusion
+4. Intent-aware reranking
+5. Relevant context selection
+6. Qwen answer generation
+7. Grounding validation
+8. Source and confidence formatting
+
+The backend runs fresh retrieval for every request and does not use shared global conversation state.
+
+## Run Tests
+
+```powershell
+python -m pytest -q
+```
+
+Current result:
+
+```text
+12 passed
+```
+
+## Current Limitations
+
+- Supabase authentication is not connected yet.
+- Chat history is not stored.
+- Feedback is validated but not stored.
+- The Qwen model currently runs locally.
+- The backend has not yet been deployed.
