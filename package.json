@@ -8,6 +8,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@ai-sdk/google": "^4.0.16",
+    "@ai-sdk/react": "^4.0.20",
     "@radix-ui/react-use-controllable-state": "^1.2.3",
     "@rive-app/react-webgl2": "^4.29.5",
     "@streamdown/cjk": "^1.0.3",

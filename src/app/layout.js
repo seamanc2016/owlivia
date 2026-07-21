@@ -1,6 +1,5 @@
 import { ThemeProvider } from "@/components/theme-provider"
 import { Inter, Cormorant_Garamond } from "next/font/google";
-import { Navbar } from "@/components/ui/navbar";
 import "./globals.css";
 
 const fontSans = Inter({
@@ -26,16 +25,15 @@ export default function RootLayout({ children }) {
       className={`${fontSans.variable} ${fontSerif.variable}  h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Navbar/>
-            {children}
-          </ThemeProvider>
+      <body className="h-screen flex flex-col">
+        <ThemeProvider
+          attribute="class"
+          forcedTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
