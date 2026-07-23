@@ -1,0 +1,550 @@
+source_type,source_path,filename,extension,assigned_majors,word_count,preview_top_words
+file,DepCourseInfo\course_listings.csv,course_listings.csv,.csv,Computer Science; Computer Engineering; Electrical Engineering; Data Science and Analytics; Cybersecurity; Artificial Intelligence,6411,systems; introduction; data; computer; design; software; programming; theory
+file,DepCourseInfo\crawl_log.csv,crawl_log.csv,.csv,Unclassified EECS,754,text; charset; utf; error; client; url
+file,DepCourseInfo\downloaded_resources_index.csv,downloaded_resources_index.csv,.csv,Computer Science; Computer Engineering; Electrical Engineering; Data Science and Analytics; Cybersecurity; Artificial Intelligence,4297,depcourseinfo; downloaded; syllabus; systems; computer; data; phd; design
+file,DepCourseInfo\external_forms_and_links.csv,external_forms_and_links.csv,.csv,Computer Science; Data Science and Analytics; Cybersecurity,14206,resource; non; external; web; saved; link; instead; downloaded
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 1,.csv-row,Unclassified EECS,10,introduction; bioengineering
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 2,.csv-row,Unclassified EECS,10,introduction; bioengineering
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 3,.csv-row,Electrical Engineering,12,bio; systems; modeling; control
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 4,.csv-row,Electrical Engineering,12,bio; systems; modeling; control
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 5,.csv-row,Unclassified EECS,10,stem; cell
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 6,.csv-row,Unclassified EECS,10,stem; cell
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 7,.csv-row,Unclassified EECS,8,tissue
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 8,.csv-row,Unclassified EECS,8,tissue
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 9,.csv-row,Unclassified EECS,10,bioinformatics; bioengineering; perspectives
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 10,.csv-row,Unclassified EECS,10,bioinformatics; bioengineering; perspectives
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 11,.csv-row,Computer Science; Artificial Intelligence,14,intro; neural; networks; instructor
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 12,.csv-row,Computer Science; Artificial Intelligence,12,introduction; neural; networks
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 13,.csv-row,Computer Science; Artificial Intelligence,12,introduction; neural; networks
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 14,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 15,.csv-row,Computer Science; Artificial Intelligence,14,computational; foundations; instructor
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 16,.csv-row,Computer Science; Data Science and Analytics; Artificial Intelligence,14,computational; foundations; artificial; intelligence
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 17,.csv-row,Computer Science; Data Science and Analytics; Artificial Intelligence,14,computational; foundations; artificial; intelligence
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 18,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 19,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 20,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 21,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 22,.csv-row,Computer Science; Data Science and Analytics,12,introduction; data; science
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 23,.csv-row,Computer Science; Data Science and Analytics,12,introduction; data; science
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 24,.csv-row,Computer Science; Data Science and Analytics,14,introduction; data; science; instructor
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 25,.csv-row,Computer Science; Data Science and Analytics; Artificial Intelligence,39,data; learning; introduction; science; deep; artificial; intelligence; information
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 26,.csv-row,Computer Science; Electrical Engineering,8,multimedia; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 27,.csv-row,Computer Science; Electrical Engineering,8,multimedia; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 28,.csv-row,Computer Science,8,multimedia; programming
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 29,.csv-row,Computer Science,8,multimedia; programming
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 30,.csv-row,Computer Science; Data Science and Analytics,13,social; networks; instructor; big; data; analytics
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 31,.csv-row,Computer Science; Data Science and Analytics,16,social; networks; big; data; analytics
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 32,.csv-row,Computer Science; Data Science and Analytics,16,social; networks; big; data; analytics
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 33,.csv-row,Computer Science,10,foundations; vision
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 34,.csv-row,Computer Science,10,foundations; vision
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 35,.csv-row,Computer Science; Data Science and Analytics,12,data; mining; bioinformatics
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 36,.csv-row,Computer Science; Data Science and Analytics,12,data; mining; bioinformatics
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 37,.csv-row,Computer Science; Data Science and Analytics; Artificial Intelligence,10,applied; machine; learning
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 38,.csv-row,Computer Science; Data Science and Analytics; Artificial Intelligence,10,applied; machine; learning
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 39,.csv-row,Computer Science,8,sparse; learning
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 40,.csv-row,Computer Science,8,sparse; learning
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 41,.csv-row,Computer Science; Data Science and Analytics; Artificial Intelligence,14,machine; learning; computer; vision
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 42,.csv-row,Computer Science; Data Science and Analytics; Artificial Intelligence,14,machine; learning; computer; vision
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 43,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 44,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 45,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 46,.csv-row,Computer Science; Data Science and Analytics; Artificial Intelligence,8,deep; learning
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 47,.csv-row,Computer Science; Data Science and Analytics; Artificial Intelligence,8,deep; learning
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 48,.csv-row,Computer Science; Data Science and Analytics; Artificial Intelligence,10,deep; learning; instructor
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 49,.csv-row,Computer Science; Data Science and Analytics; Artificial Intelligence,34,learning; deep; artificial; intelligence; information; retrieval; data; dsa
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 50,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 51,.csv-row,Computer Science; Artificial Intelligence,10,reinforcement; learning; instructor
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 52,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 53,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 54,.csv-row,Computer Science; Data Science and Analytics; Artificial Intelligence,8,artificial; intelligence
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 55,.csv-row,Computer Science; Data Science and Analytics; Artificial Intelligence,8,artificial; intelligence
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 56,.csv-row,Computer Science; Data Science and Analytics; Artificial Intelligence,31,artificial; intelligence; information; retrieval; data; learning; dsa; include
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 57,.csv-row,Computer Science; Data Science and Analytics; Artificial Intelligence,14,artificial; intelligence; distinguished; guest; speaker
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 58,.csv-row,Computer Science; Artificial Intelligence,10,natural; language; processing
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 59,.csv-row,Computer Science; Artificial Intelligence,10,natural; language; processing
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 60,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 61,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 62,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 63,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 64,.csv-row,Computer Science; Data Science and Analytics; Artificial Intelligence,14,data; mining; machine; learning
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 65,.csv-row,Computer Science; Data Science and Analytics; Artificial Intelligence,14,data; mining; machine; learning
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 66,.csv-row,Computer Science; Data Science and Analytics; Artificial Intelligence,44,data; learning; mining; machine; introduction; science; deep; artificial
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 67,.csv-row,Computer Science,10,distinguished; guest; speaker
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 68,.csv-row,Computer Science,10,distinguished; guest; speaker
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 69,.csv-row,Computer Science,10,distinguished; guest; speaker
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 70,.csv-row,Computer Science,10,distinguished; guest; speaker
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 71,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 72,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 73,.csv-row,Computer Science,8,information; retrieval
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 74,.csv-row,Computer Science,8,information; retrieval
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 75,.csv-row,Computer Science; Data Science and Analytics; Artificial Intelligence,28,information; retrieval; data; learning; dsa; include; mining; machine
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 76,.csv-row,Computer Science,11,information; retrieval; instructor
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 77,.csv-row,Computer Science,8,web; mining
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 78,.csv-row,Computer Science,8,web; mining
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 79,.csv-row,Computer Science; Data Science and Analytics; Artificial Intelligence,16,advanced; data; mining; machine; learning
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 80,.csv-row,Computer Science; Data Science and Analytics; Artificial Intelligence,16,advanced; data; mining; machine; learning
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 81,.csv-row,Computer Science; Data Science and Analytics,14,big; data; analytics; hadoop
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 82,.csv-row,Computer Science; Data Science and Analytics,14,big; data; analytics; hadoop
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 83,.csv-row,Computer Science; Data Science and Analytics,16,computational; advertising; real; time; data; analytics
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 84,.csv-row,Computer Science; Data Science and Analytics,16,computational; advertising; real; time; data; analytics
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 85,.csv-row,Computer Engineering,8,cryptographic
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 86,.csv-row,Computer Engineering,8,cryptographic
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 87,.csv-row,Computer Engineering; Electrical Engineering,16,evaluation; parallel; distributed; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 88,.csv-row,Computer Engineering; Electrical Engineering,16,evaluation; parallel; distributed; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 89,.csv-row,Computer Engineering,8,multiprocessor; architecture
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 90,.csv-row,Computer Engineering,8,multiprocessor; architecture
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 91,.csv-row,Computer Engineering,10,structured; vlsi; design
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 92,.csv-row,Computer Engineering,10,structured; vlsi; design
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 93,.csv-row,Computer Engineering; Electrical Engineering,10,embedded; systems; design
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 94,.csv-row,Computer Engineering; Electrical Engineering,10,embedded; systems; design
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 95,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 96,.csv-row,Computer Science,8,software
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 97,.csv-row,Computer Science,8,software
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 98,.csv-row,Computer Science,10,software; instructor
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 99,.csv-row,Computer Science,8,cloud; computing
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 100,.csv-row,Computer Science,8,cloud; computing
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 101,.csv-row,Computer Science; Computer Engineering; Electrical Engineering,81,prefix; counted; prior; thesis; non; options; require; minimum
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 102,.csv-row,Computer Science,12,software; maintenance; evolution
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 103,.csv-row,Computer Science,12,software; maintenance; evolution
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 104,.csv-row,Computer Science,10,software
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 105,.csv-row,Computer Science,10,software
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 106,.csv-row,Computer Science,8,software; testing
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 107,.csv-row,Computer Science,8,software; testing
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 108,.csv-row,Computer Science,12,software; architecture; patterns
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 109,.csv-row,Computer Science,12,software; architecture; patterns
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 110,.csv-row,Computer Science,10,computer; performance; modeling
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 111,.csv-row,Computer Science,10,computer; performance; modeling
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 112,.csv-row,Computer Science; Computer Engineering; Electrical Engineering,80,prefix; counted; prior; thesis; non; options; require; minimum
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 113,.csv-row,Unclassified EECS,8,seminar
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 114,.csv-row,Unclassified EECS,8,seminar
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 115,.csv-row,Unclassified EECS,8,seminar
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 116,.csv-row,Unclassified EECS,8,seminar
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 117,.csv-row,Unclassified EECS,39,thesis; seminar; pursuing; option; addition; non; complete
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 118,.csv-row,Unclassified EECS,13,seminar; complete
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 119,.csv-row,Unclassified EECS,14,seminar; complete
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 120,.csv-row,Computer Science; Cybersecurity,14,practical; aspects; modern; cryptography
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 121,.csv-row,Computer Science; Cybersecurity,14,practical; aspects; modern; cryptography
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 122,.csv-row,Computer Science; Cybersecurity,16,practical; aspects; modern; cryptography; instructor
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 123,.csv-row,Computer Science; Cybersecurity,16,practical; aspects; modern; cryptography; instructor
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 124,.csv-row,Computer Science; Cybersecurity,28,practical; aspects; modern; cryptography; invited; guest; speaker; instructor
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 125,.csv-row,Computer Science; Cybersecurity,10,computer; data; security
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 126,.csv-row,Computer Science; Cybersecurity,10,computer; data; security
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 127,.csv-row,Computer Science; Electrical Engineering; Cybersecurity,10,distributed; systems; security
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 128,.csv-row,Computer Science; Electrical Engineering; Cybersecurity,10,distributed; systems; security
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 129,.csv-row,Computer Science,8,computer; networks
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 130,.csv-row,Computer Science,8,computer; networks
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 131,.csv-row,Computer Science; Electrical Engineering,14,sensor; networks; smart; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 132,.csv-row,Computer Science; Electrical Engineering,14,sensor; networks; smart; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 133,.csv-row,Computer Science; Computer Engineering; Electrical Engineering,12,embedded; network; sensor; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 134,.csv-row,Computer Science; Computer Engineering; Electrical Engineering,12,embedded; network; sensor; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 135,.csv-row,Computer Science,8,mobile; multimedia
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 136,.csv-row,Computer Science,8,mobile; multimedia
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 137,.csv-row,Computer Science,10,advanced; computer; networking
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 138,.csv-row,Computer Science,10,advanced; computer; networking
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 139,.csv-row,Computer Science,8,mobile; computing
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 140,.csv-row,Computer Science,8,mobile; computing
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 141,.csv-row,Computer Science,8,vehicular; networks
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 142,.csv-row,Computer Science,8,vehicular; networks
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 143,.csv-row,Computer Science; Electrical Engineering,8,video; communication
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 144,.csv-row,Computer Science; Electrical Engineering,8,video; communication
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 145,.csv-row,Computer Science,12,object; oriented; software; design
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 146,.csv-row,Computer Science,12,object; oriented; software; design
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 147,.csv-row,Computer Science,12,component; programming; net
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 148,.csv-row,Computer Science,12,component; programming; net
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 149,.csv-row,Computer Science,10,semantic; web; programming
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 150,.csv-row,Computer Science,10,semantic; web; programming
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 151,.csv-row,Computer Science,8,concurrency; modeling
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 152,.csv-row,Computer Science,8,concurrency; modeling
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 153,.csv-row,Computer Science; Electrical Engineering,14,new; directions; database; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 154,.csv-row,Computer Science; Electrical Engineering,14,new; directions; database; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 155,.csv-row,Computer Science,10,visual; information; retrieval
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 156,.csv-row,Computer Science,10,visual; information; retrieval
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 157,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 158,.csv-row,Computer Science; Electrical Engineering,16,theory; implementation; database; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 159,.csv-row,Computer Science; Electrical Engineering,16,theory; implementation; database; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 160,.csv-row,Computer Science,15,advanced; internet; distinguished; guest; speaker
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 161,.csv-row,Computer Science,17,advanced; internet; distinguished; guest; speaker
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 162,.csv-row,Computer Science,17,advanced; internet; distinguished; guest; speaker
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 163,.csv-row,Computer Science,17,advanced; internet; distinguished; guest; speaker
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 164,.csv-row,Computer Science,7,software; management
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 165,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 166,.csv-row,Computer Science; Data Science and Analytics; Cybersecurity; Artificial Intelligence,11,data; science; cybersecurity; ethics
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 167,.csv-row,Computer Science,6,cloud; native; development
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 168,.csv-row,Computer Science; Artificial Intelligence,6,conversational
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 169,.csv-row,Computer Science; Computer Engineering; Electrical Engineering,85,prefix; counted; prior; thesis; non; options; require; minimum
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 170,.csv-row,Computer Science; Computer Engineering; Electrical Engineering,111,minimum; theory; algorithms; prefix; counted; satisfy; prior; professional
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 171,.csv-row,Computer Science,10,digital; image; processing
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 172,.csv-row,Computer Science,10,digital; image; processing
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 173,.csv-row,Computer Science; Electrical Engineering,10,medical; information; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 174,.csv-row,Computer Science; Electrical Engineering,10,medical; information; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 175,.csv-row,Computer Science,14,mobile; development; ios
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 176,.csv-row,Computer Science,14,mobile; development; ios
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 177,.csv-row,Computer Science,14,theory; philosophy; computation
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 178,.csv-row,Computer Science,14,theory; philosophy; computation
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 179,.csv-row,Computer Science,10,analysis; algorithms
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 180,.csv-row,Computer Science,10,analysis; algorithms
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 181,.csv-row,Computer Science,10,secret; sharing; protocols
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 182,.csv-row,Computer Science,10,secret; sharing; protocols
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 183,.csv-row,Computer Science,8,randomized; algorithms
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 184,.csv-row,Computer Science,8,randomized; algorithms
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 185,.csv-row,Computer Science; Computer Engineering; Electrical Engineering,83,prefix; counted; prior; thesis; non; options; require; minimum
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 186,.csv-row,Computer Science; Computer Engineering; Electrical Engineering,109,minimum; theory; algorithms; prefix; counted; satisfy; prior; professional
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 187,.csv-row,Computer Science; Computer Engineering; Electrical Engineering,82,prefix; counted; prior; thesis; non; options; require; minimum
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 188,.csv-row,Computer Science; Computer Engineering; Electrical Engineering,107,minimum; theory; algorithms; prefix; counted; satisfy; prior; professional
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 189,.csv-row,Computer Science; Artificial Intelligence,10,generative; software; development; lifecycles
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 190,.csv-row,Computer Science,11,introduction; intelligent; autonomous; robots
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 191,.csv-row,Computer Science; Electrical Engineering,11,automatic; biometric; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 192,.csv-row,Computer Science; Electrical Engineering,11,automatic; biometric; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 193,.csv-row,Computer Science; Electrical Engineering,11,automatic; biometric; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 194,.csv-row,Computer Science; Electrical Engineering,11,automatic; biometric; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 195,.csv-row,Computer Science; Computer Engineering; Electrical Engineering,84,prefix; counted; prior; thesis; non; options; require; minimum
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 196,.csv-row,Computer Science; Computer Engineering; Electrical Engineering,110,minimum; theory; algorithms; prefix; counted; satisfy; prior; professional
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 197,.csv-row,Computer Science,10,emerging; multimedia; technologies
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 198,.csv-row,Computer Science,10,emerging; multimedia; technologies
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 199,.csv-row,Computer Science,14,genai; software; dev; lifecycles; instructor
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 200,.csv-row,Computer Science,20,genai; software; dev; lifecycles; distinguished; guest; speaker
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 201,.csv-row,Computer Science; Electrical Engineering; Data Science and Analytics; Artificial Intelligence,119,generative; intelligence; lab; research; software; development; lifecycles; heads
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 202,.csv-row,Electrical Engineering,8,biosignal; processing
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 203,.csv-row,Electrical Engineering,8,biosignal; processing
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 204,.csv-row,Electrical Engineering,8,cmos; amplifiers
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 205,.csv-row,Electrical Engineering,8,cmos; amplifiers
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 206,.csv-row,Electrical Engineering,12,silicon; integrated; circuit; fabrication
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 207,.csv-row,Electrical Engineering,12,silicon; integrated; circuit; fabrication
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 208,.csv-row,Electrical Engineering,12,high; frequency; amplifier; design
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 209,.csv-row,Electrical Engineering,12,high; frequency; amplifier; design
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 210,.csv-row,Electrical Engineering,6,nanobiotechnology
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 211,.csv-row,Electrical Engineering,6,nanobiotechnology
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 212,.csv-row,Electrical Engineering,12,digital; processing; signals
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 213,.csv-row,Electrical Engineering,12,digital; processing; signals
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 214,.csv-row,Electrical Engineering,12,introduction; radar; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 215,.csv-row,Electrical Engineering,12,introduction; radar; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 216,.csv-row,Electrical Engineering,12,devices; circuits
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 217,.csv-row,Electrical Engineering,12,devices; circuits
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 218,.csv-row,Electrical Engineering,10,advanced; signal; processing
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 219,.csv-row,Electrical Engineering,10,advanced; signal; processing
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 220,.csv-row,Electrical Engineering,14,digital; processing; speech; signals
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 221,.csv-row,Electrical Engineering,14,digital; processing; speech; signals
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 222,.csv-row,Electrical Engineering,8,microwave
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 223,.csv-row,Electrical Engineering,8,microwave
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 224,.csv-row,Electrical Engineering,10,digital; communications; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 225,.csv-row,Electrical Engineering,10,digital; communications; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 226,.csv-row,Electrical Engineering,8,modern; control
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 227,.csv-row,Electrical Engineering,8,modern; control
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 228,.csv-row,Electrical Engineering,8,control; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 229,.csv-row,Electrical Engineering,8,control; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 230,.csv-row,Electrical Engineering,8,robotic
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 231,.csv-row,Electrical Engineering,8,robotic
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 232,.csv-row,Electrical Engineering,8,cryptographic
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 233,.csv-row,Electrical Engineering,8,cryptographic
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 234,.csv-row,Electrical Engineering,8,smart; grid
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 235,.csv-row,Electrical Engineering,8,smart; grid
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 236,.csv-row,Electrical Engineering,8,smart; antennas
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 237,.csv-row,Electrical Engineering,8,smart; antennas
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 238,.csv-row,Computer Science; Electrical Engineering,8,electromagnetic; theory
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 239,.csv-row,Computer Science; Electrical Engineering,8,electromagnetic; theory
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 240,.csv-row,Computer Science; Electrical Engineering,8,information; theory
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 241,.csv-row,Computer Science; Electrical Engineering,8,information; theory
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 242,.csv-row,Computer Science; Electrical Engineering,8,detection; theory
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 243,.csv-row,Computer Science; Electrical Engineering,8,detection; theory
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 244,.csv-row,Electrical Engineering,10,fiber; optic; communications
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 245,.csv-row,Electrical Engineering,10,fiber; optic; communications
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 246,.csv-row,Electrical Engineering,8,wireless; networks
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 247,.csv-row,Electrical Engineering,8,wireless; networks
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 248,.csv-row,Electrical Engineering,8,wireless; networks
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 249,.csv-row,Electrical Engineering,8,wireless; networks
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 250,.csv-row,Electrical Engineering,8,mobile; communication
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 251,.csv-row,Electrical Engineering,8,mobile; communication
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 252,.csv-row,Electrical Engineering,12,wireless; personal; communication; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 253,.csv-row,Electrical Engineering,12,wireless; personal; communication; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 254,.csv-row,Electrical Engineering,8,intelligent; control
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 255,.csv-row,Electrical Engineering,8,intelligent; control
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 256,.csv-row,Electrical Engineering; Artificial Intelligence,16,neural; complex; artificial; networks
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 257,.csv-row,Electrical Engineering; Artificial Intelligence,16,neural; complex; artificial; networks
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 258,.csv-row,Computer Science; Electrical Engineering,12,automatic; biometric; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 259,.csv-row,Computer Science; Electrical Engineering,12,automatic; biometric; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 260,.csv-row,Computer Science; Electrical Engineering,12,automatic; biometric; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 261,.csv-row,Computer Science; Electrical Engineering,12,automatic; biometric; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 262,.csv-row,Electrical Engineering,8,medical; imaging
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 263,.csv-row,Electrical Engineering,8,medical; imaging
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 264,.csv-row,Electrical Engineering,8,multimedia; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 265,.csv-row,Electrical Engineering,8,multimedia; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 266,.csv-row,Computer Science,8,game; programming
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 267,.csv-row,Computer Science,8,game; programming
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 268,.csv-row,Computer Science,8,computer; animation
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 269,.csv-row,Computer Science,8,computer; animation
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 270,.csv-row,Computer Science,10,digital; image; processing
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 271,.csv-row,Computer Science,10,digital; image; processing
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 272,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 273,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 274,.csv-row,Computer Science; Artificial Intelligence,6,trustworthy
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 275,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 276,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 277,.csv-row,Computer Science; Data Science and Analytics; Artificial Intelligence,8,artificial; intelligence
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 278,.csv-row,Computer Science; Data Science and Analytics; Artificial Intelligence,8,artificial; intelligence
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 279,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 280,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 281,.csv-row,Computer Science; Data Science and Analytics,16,introdution; data; mining; machine; intelligence
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 282,.csv-row,Computer Science; Data Science and Analytics,16,introdution; data; mining; machine; intelligence
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 283,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 284,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 285,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 286,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 287,.csv-row,Computer Engineering,15,introduction; logic; design
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 288,.csv-row,Computer Engineering,15,introduction; logic; design
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 289,.csv-row,Computer Engineering,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 290,.csv-row,Computer Engineering,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 291,.csv-row,Computer Engineering,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 292,.csv-row,Computer Engineering,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 293,.csv-row,Computer Engineering,15,introduction; microprocessor
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 294,.csv-row,Computer Engineering,15,introduction; microprocessor
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 295,.csv-row,Computer Engineering,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 296,.csv-row,Computer Engineering,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 297,.csv-row,Computer Engineering,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 298,.csv-row,Computer Engineering,10,structured; computer; architecture
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 299,.csv-row,Computer Engineering,10,structured; computer; architecture
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 300,.csv-row,Computer Engineering,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 301,.csv-row,Computer Engineering,10,cad; based; computer; design
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 302,.csv-row,Computer Engineering,10,cad; based; computer; design
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 303,.csv-row,Computer Engineering,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 304,.csv-row,Computer Engineering,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 305,.csv-row,Computer Engineering,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 306,.csv-row,Computer Engineering,12,introduction; vlsi; design
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 307,.csv-row,Computer Engineering,12,introduction; vlsi; design
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 308,.csv-row,Computer Engineering,7,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 309,.csv-row,Computer Engineering,7,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 310,.csv-row,Computer Engineering,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 311,.csv-row,Computer Engineering,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 312,.csv-row,Computer Engineering,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 313,.csv-row,Computer Engineering,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 314,.csv-row,Computer Engineering; Electrical Engineering,12,introduction; embedded; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 315,.csv-row,Computer Engineering; Electrical Engineering,12,introduction; embedded; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 316,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 317,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 318,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 319,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 320,.csv-row,Computer Science,12,principles; software
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 321,.csv-row,Computer Science,12,principles; software
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 322,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 323,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 324,.csv-row,Computer Science; Computer Engineering,10,software; hardware; design
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 325,.csv-row,Computer Science; Computer Engineering,10,software; hardware; design
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 326,.csv-row,Computer Science; Computer Engineering; Electrical Engineering,16,introduction; computer; systems; performance; evaluation
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 327,.csv-row,Computer Science; Computer Engineering; Electrical Engineering,16,introduction; computer; systems; performance; evaluation
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 328,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 329,.csv-row,Computer Science,6,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 330,.csv-row,Computer Science,8,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 331,.csv-row,Unclassified EECS,8,computer
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 332,.csv-row,Unclassified EECS,8,computer
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 333,.csv-row,Unclassified EECS,8,computer
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 334,.csv-row,Unclassified EECS,8,computer
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 335,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 336,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 337,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 338,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 339,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 340,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 341,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 342,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 343,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 344,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 345,.csv-row,Computer Science; Electrical Engineering,12,introduction; data; communications
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 346,.csv-row,Computer Science; Electrical Engineering,12,introduction; data; communications
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 347,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 348,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 349,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 350,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 351,.csv-row,Computer Science; Cybersecurity,16,introduction; data; network; security
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 352,.csv-row,Computer Science; Cybersecurity,16,introduction; data; network; security
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 353,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 354,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 355,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 356,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 357,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 358,.csv-row,Computer Science,14,introduction; programming
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 359,.csv-row,Computer Science,14,introduction; programming
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 360,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 361,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 362,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 363,.csv-row,Computer Science,12,foundations; computer; science
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 364,.csv-row,Computer Science,12,foundations; computer; science
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 365,.csv-row,Computer Science,16,prerequisite
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 366,.csv-row,Computer Science,17,foundation; computer; science; lab
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 367,.csv-row,Computer Science,17,foundation; computer; science; lab
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 368,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 369,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 370,.csv-row,Computer Science,19,minimum; grade; prerequisite
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 371,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 372,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 373,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 374,.csv-row,Computer Science,14,data; structures; algorithm; analysis
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 375,.csv-row,Computer Science,14,data; structures; algorithm; analysis
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 376,.csv-row,Computer Science,71,directed; independent; study; data; structures; algorithm; analysis; minimum
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 377,.csv-row,Computer Science,71,directed; independent; study; data; structures; algorithm; analysis; minimum
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 378,.csv-row,Computer Science,67,data; structures; algorithm; analysis; minimum; grade; eligible; register
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 379,.csv-row,Computer Science,17,minimum; grade; prerequisite
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 380,.csv-row,Computer Science,13,prerequisite
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 381,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 382,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 383,.csv-row,Computer Science,12,introduction; database; structures
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 384,.csv-row,Computer Science,12,introduction; database; structures
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 385,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 386,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 387,.csv-row,Computer Science,12,introduction; internet; computing
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 388,.csv-row,Computer Science,12,introduction; internet; computing
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 389,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 390,.csv-row,Computer Science,8,programming; languages
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 391,.csv-row,Computer Science,8,programming; languages
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 392,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 393,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 394,.csv-row,Computer Science,8,python; programming
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 395,.csv-row,Computer Science,8,python; programming
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 396,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 397,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 398,.csv-row,Computer Science,14,object; oriented; design; programming
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 399,.csv-row,Computer Science,14,object; oriented; design; programming
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 400,.csv-row,Computer Science,10,graphical; development
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 401,.csv-row,Computer Science,10,graphical; development
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 402,.csv-row,Computer Science,12,component; programming; net
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 403,.csv-row,Computer Science,12,component; programming; net
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 404,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 405,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 406,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 407,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 408,.csv-row,Computer Science; Electrical Engineering,10,computer; operating; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 409,.csv-row,Computer Science; Electrical Engineering,10,computer; operating; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 410,.csv-row,Computer Science,7,mobile; app; projects
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 411,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 412,.csv-row,Computer Science,6,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 413,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 414,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 415,.csv-row,Computer Science; Electrical Engineering,10,applied; database; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 416,.csv-row,Computer Science; Electrical Engineering,10,applied; database; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 417,.csv-row,Computer Science,17,prerequisite
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 418,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 419,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 420,.csv-row,Computer Science,8,web; services
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 421,.csv-row,Computer Science,8,web; services
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 422,.csv-row,Computer Science,10,cutting; edge; web; technologies
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 423,.csv-row,Computer Science,10,cutting; edge; web; technologies
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 424,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 425,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 426,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 427,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 428,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 429,.csv-row,Computer Science,14,design; analysis; algorithms
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 430,.csv-row,Computer Science,14,design; analysis; algorithms
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 431,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 432,.csv-row,Computer Science,14,formal; languages; automata; theory
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 433,.csv-row,Computer Science,14,formal; languages; automata; theory
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 434,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 435,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 436,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 437,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 438,.csv-row,Computer Science; Data Science and Analytics; Cybersecurity; Artificial Intelligence,10,data; science; cybersecurity; ethics
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 439,.csv-row,Computer Science,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 440,.csv-row,Computer Science; Cybersecurity,8,applied; cryptography
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 441,.csv-row,Computer Science; Cybersecurity,8,applied; cryptography
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 442,.csv-row,Computer Science,8,cryptographic
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 443,.csv-row,Computer Science,8,cryptographic
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 444,.csv-row,Computer Science; Cybersecurity,14,introduction; security; cryptography
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 445,.csv-row,Computer Science; Cybersecurity,14,introduction; security; cryptography
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 446,.csv-row,Computer Science,8,randomized; algorithms
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 447,.csv-row,Computer Science,8,randomized; algorithms
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 448,.csv-row,Computer Science,8,senior; seminar
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 449,.csv-row,Computer Science,8,senior; seminar
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 450,.csv-row,Electrical Engineering,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 451,.csv-row,Electrical Engineering,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 452,.csv-row,Electrical Engineering,6,electronics
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 453,.csv-row,Electrical Engineering,6,electronics
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 454,.csv-row,Electrical Engineering,13,high; frequency; amplifiers
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 455,.csv-row,Electrical Engineering,13,high; frequency; amplifiers
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 456,.csv-row,Electrical Engineering,6,electronics
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 457,.csv-row,Electrical Engineering,6,electronics
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 458,.csv-row,Electrical Engineering,7,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 459,.csv-row,Electrical Engineering,7,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 460,.csv-row,Electrical Engineering,6,nanobiotechnology
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 461,.csv-row,Electrical Engineering,6,nanobiotechnology
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 462,.csv-row,Electrical Engineering,14,introduction; digital; signal; processing
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 463,.csv-row,Electrical Engineering,14,introduction; digital; signal; processing
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 464,.csv-row,Electrical Engineering,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 465,.csv-row,Electrical Engineering,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 466,.csv-row,Electrical Engineering,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 467,.csv-row,Electrical Engineering,14,stochastic; processes; random; signals
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 468,.csv-row,Electrical Engineering,14,stochastic; processes; random; signals
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 469,.csv-row,Electrical Engineering; Data Science and Analytics,34,stochastic; processes; random; signals; pursuing; math; sta; probability
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 470,.csv-row,Electrical Engineering; Data Science and Analytics,34,stochastic; processes; random; signals; pursuing; math; sta; probability
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 471,.csv-row,Electrical Engineering,10,engineers
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 472,.csv-row,Electrical Engineering,10,engineers
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 473,.csv-row,Electrical Engineering,10,electrical; practice
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 474,.csv-row,Electrical Engineering,10,electrical; practice
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 475,.csv-row,Electrical Engineering,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 476,.csv-row,Electrical Engineering,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 477,.csv-row,Electrical Engineering,6,circuits
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 478,.csv-row,Electrical Engineering,6,circuits
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 479,.csv-row,Electrical Engineering,6,circuits
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 480,.csv-row,Electrical Engineering,6,circuits
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 481,.csv-row,Electrical Engineering,7,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 482,.csv-row,Electrical Engineering,7,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 483,.csv-row,Electrical Engineering,9,lab
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 484,.csv-row,Electrical Engineering,9,lab
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 485,.csv-row,Electrical Engineering,12,electromagnetic; field; waves
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 486,.csv-row,Electrical Engineering,12,electromagnetic; field; waves
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 487,.csv-row,Electrical Engineering,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 488,.csv-row,Electrical Engineering,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 489,.csv-row,Electrical Engineering,9,lab
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 490,.csv-row,Electrical Engineering,9,lab
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 491,.csv-row,Electrical Engineering,10,electric; power; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 492,.csv-row,Electrical Engineering,10,electric; power; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 493,.csv-row,Electrical Engineering,8,electrical; machines
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 494,.csv-row,Electrical Engineering,8,electrical; machines
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 495,.csv-row,Electrical Engineering,10,photovoltaic; power; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 496,.csv-row,Electrical Engineering,10,photovoltaic; power; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 497,.csv-row,Electrical Engineering,15,devices; circuits
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 498,.csv-row,Electrical Engineering,15,devices; circuits
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 499,.csv-row,Electrical Engineering,15,microwave; laboratory
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 500,.csv-row,Electrical Engineering,15,microwave; laboratory
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 501,.csv-row,Electrical Engineering,8,microwave
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 502,.csv-row,Electrical Engineering,8,microwave
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 503,.csv-row,Computer Science; Electrical Engineering,12,introduction; antenna; theory
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 504,.csv-row,Computer Science; Electrical Engineering,12,introduction; antenna; theory
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 505,.csv-row,Electrical Engineering,8,electromagnetic; compatibility
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 506,.csv-row,Electrical Engineering,8,electromagnetic; compatibility
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 507,.csv-row,Electrical Engineering,14,introduction; digital; signal; processing
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 508,.csv-row,Electrical Engineering,14,introduction; digital; signal; processing
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 509,.csv-row,Electrical Engineering,8,communication; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 510,.csv-row,Electrical Engineering,8,communication; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 511,.csv-row,Electrical Engineering,13,communication; systems; lab
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 512,.csv-row,Electrical Engineering,13,communication; systems; lab
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 513,.csv-row,Electrical Engineering,8,control; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 514,.csv-row,Electrical Engineering,8,control; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 515,.csv-row,Electrical Engineering,13,control; systems; lab
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 516,.csv-row,Electrical Engineering,13,control; systems; lab
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 517,.csv-row,Electrical Engineering,12,analysis; linear; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 518,.csv-row,Electrical Engineering,12,analysis; linear; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 519,.csv-row,Electrical Engineering,14,introduction; microcontrollers; lab
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 520,.csv-row,Electrical Engineering,14,introduction; microcontrollers; lab
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 521,.csv-row,Electrical Engineering,10,innovative; product; design
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 522,.csv-row,Electrical Engineering,10,innovative; product; design
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 523,.csv-row,Electrical Engineering,10,renewable; energy; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 524,.csv-row,Electrical Engineering,10,renewable; energy; systems
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 525,.csv-row,Electrical Engineering,10,silicon; fabrication
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 526,.csv-row,Electrical Engineering,10,silicon; fabrication
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 527,.csv-row,Unclassified EECS,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 528,.csv-row,Unclassified EECS,4,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 529,.csv-row,Unclassified EECS,10,fundamentals
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 530,.csv-row,Unclassified EECS,10,fundamentals
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 531,.csv-row,Computer Engineering,95,fundamentals; computer; entering; fewer; satisfy; specified; section; transfer
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 532,.csv-row,Unclassified EECS,13,design
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 533,.csv-row,Unclassified EECS,13,design
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 534,.csv-row,Unclassified EECS,13,design
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 535,.csv-row,Unclassified EECS,13,design
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 536,.csv-row,Unclassified EECS,13,design
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 537,.csv-row,Unclassified EECS,13,design
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 538,.csv-row,Unclassified EECS,13,design
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 539,.csv-row,Unclassified EECS,13,design
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 540,.csv-row,Unclassified EECS,7,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 541,.csv-row,Unclassified EECS,7,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 542,.csv-row,Unclassified EECS,7,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 543,.csv-row,Unclassified EECS,7,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 544,.csv-row,Unclassified EECS,7,
+course_listing_row,DepCourseInfo\course_listings.csv,course_listings.csv row 545,.csv-row,Unclassified EECS,7,

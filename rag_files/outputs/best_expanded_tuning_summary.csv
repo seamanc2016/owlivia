@@ -1,0 +1,4 @@
+selection,method,chunk_size_words,chunk_overlap_words,top_k,bm25_k1,bm25_b,rrf_k,bm25_weight,dense_weight,rerank_top_n,reranker_model,ndcg_k,ndcg,map,combined_score,num_chunks,num_qrels
+Best combined nDCG/MAP,rrf,700,100,100,2.2,1.0,150,0.5,2.0,0,,30,0.4939743392787589,0.3511990725417498,0.4225867059102544,582,182
+Best nDCG@30,rrf,700,100,100,1.8,0.9,150,0.5,2.0,0,,30,0.49424484100649485,0.3495395645442355,0.4218922027753652,582,182
+Best MAP,rrf,700,150,200,2.2,1.0,150,0.5,2.5,0,,30,0.48748047415370926,0.3535823781668998,0.42053142616030453,586,182

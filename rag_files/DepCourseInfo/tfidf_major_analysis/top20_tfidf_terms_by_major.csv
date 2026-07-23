@@ -1,0 +1,141 @@
+major,rank,term,tfidf_score,major_document_count,major_unique_source_count,major_word_count
+Artificial Intelligence,1,downloaded,0.114053,40,2,11368
+Artificial Intelligence,2,depcourseinfo,0.114053,40,2,11368
+Artificial Intelligence,3,syllabus,0.107408,40,2,11368
+Artificial Intelligence,4,systems,0.106011,40,2,11368
+Artificial Intelligence,5,data,0.100467,40,2,11368
+Artificial Intelligence,6,learning,0.093943,40,2,11368
+Artificial Intelligence,7,artificial,0.092395,40,2,11368
+Artificial Intelligence,8,intelligence,0.092395,40,2,11368
+Artificial Intelligence,9,software,0.088033,40,2,11368
+Artificial Intelligence,10,programming,0.087501,40,2,11368
+Artificial Intelligence,11,theory,0.087229,40,2,11368
+Artificial Intelligence,12,networks,0.087229,40,2,11368
+Artificial Intelligence,13,introduction,0.086612,40,2,11368
+Artificial Intelligence,14,science,0.086385,40,2,11368
+Artificial Intelligence,15,computer,0.086095,40,2,11368
+Artificial Intelligence,16,machine,0.086094,40,2,11368
+Artificial Intelligence,17,processing,0.085497,40,2,11368
+Artificial Intelligence,18,mining,0.083569,40,2,11368
+Artificial Intelligence,19,information,0.082875,40,2,11368
+Artificial Intelligence,20,design,0.082379,40,2,11368
+Computer Engineering,1,downloaded,0.114143,58,2,12137
+Computer Engineering,2,depcourseinfo,0.114143,58,2,12137
+Computer Engineering,3,systems,0.10855,58,2,12137
+Computer Engineering,4,syllabus,0.107493,58,2,12137
+Computer Engineering,5,data,0.097367,58,2,12137
+Computer Engineering,6,theory,0.091638,58,2,12137
+Computer Engineering,7,software,0.090764,58,2,12137
+Computer Engineering,8,programming,0.090079,58,2,12137
+Computer Engineering,9,introduction,0.087785,58,2,12137
+Computer Engineering,10,computer,0.087785,58,2,12137
+Computer Engineering,11,algorithms,0.08674,58,2,12137
+Computer Engineering,12,prefix,0.08674,58,2,12137
+Computer Engineering,13,design,0.08603,58,2,12137
+Computer Engineering,14,intelligence,0.085866,58,2,12137
+Computer Engineering,15,artificial,0.085565,58,2,12137
+Computer Engineering,16,learning,0.084946,58,2,12137
+Computer Engineering,17,minimum,0.084946,58,2,12137
+Computer Engineering,18,science,0.084946,58,2,12137
+Computer Engineering,19,networks,0.084303,58,2,12137
+Computer Engineering,20,processing,0.084303,58,2,12137
+Computer Science,1,external,0.162198,340,3,29238
+Computer Science,2,link,0.162198,340,3,29238
+Computer Science,3,instead,0.162198,340,3,29238
+Computer Science,4,saved,0.162198,340,3,29238
+Computer Science,5,elearning,0.126479,340,3,29238
+Computer Science,6,visitor,0.126479,340,3,29238
+Computer Science,7,consumer,0.126479,340,3,29238
+Computer Science,8,downloaded,0.113061,340,3,29238
+Computer Science,9,resource,0.111001,340,3,29238
+Computer Science,10,web,0.109273,340,3,29238
+Computer Science,11,information,0.097304,340,3,29238
+Computer Science,12,non,0.096011,340,3,29238
+Computer Science,13,depcourseinfo,0.094652,340,3,29238
+Computer Science,14,systems,0.092246,340,3,29238
+Computer Science,15,syllabus,0.089481,340,3,29238
+Computer Science,16,data,0.087826,340,3,29238
+Computer Science,17,relevant,0.084865,340,3,29238
+Computer Science,18,software,0.08099,340,3,29238
+Computer Science,19,programming,0.080357,340,3,29238
+Computer Science,20,theory,0.080227,340,3,29238
+Cybersecurity,1,instead,0.172944,20,3,25139
+Cybersecurity,2,saved,0.172944,20,3,25139
+Cybersecurity,3,external,0.172944,20,3,25139
+Cybersecurity,4,link,0.172944,20,3,25139
+Cybersecurity,5,consumer,0.13486,20,3,25139
+Cybersecurity,6,visitor,0.13486,20,3,25139
+Cybersecurity,7,elearning,0.13486,20,3,25139
+Cybersecurity,8,downloaded,0.120552,20,3,25139
+Cybersecurity,9,resource,0.118355,20,3,25139
+Cybersecurity,10,web,0.116225,20,3,25139
+Cybersecurity,11,information,0.102584,20,3,25139
+Cybersecurity,12,non,0.102275,20,3,25139
+Cybersecurity,13,depcourseinfo,0.100923,20,3,25139
+Cybersecurity,14,syllabus,0.09541,20,3,25139
+Cybersecurity,15,systems,0.094047,20,3,25139
+Cybersecurity,16,relevant,0.090488,20,3,25139
+Cybersecurity,17,data,0.087501,20,3,25139
+Cybersecurity,18,programming,0.077428,20,3,25139
+Cybersecurity,19,software,0.077187,20,3,25139
+Cybersecurity,20,theory,0.077187,20,3,25139
+Data Science and Analytics,1,link,0.169958,45,3,25705
+Data Science and Analytics,2,instead,0.169958,45,3,25705
+Data Science and Analytics,3,saved,0.169958,45,3,25705
+Data Science and Analytics,4,external,0.169958,45,3,25705
+Data Science and Analytics,5,elearning,0.132531,45,3,25705
+Data Science and Analytics,6,consumer,0.132531,45,3,25705
+Data Science and Analytics,7,visitor,0.132531,45,3,25705
+Data Science and Analytics,8,downloaded,0.11847,45,3,25705
+Data Science and Analytics,9,resource,0.116312,45,3,25705
+Data Science and Analytics,10,web,0.114218,45,3,25705
+Data Science and Analytics,11,information,0.101205,45,3,25705
+Data Science and Analytics,12,non,0.100509,45,3,25705
+Data Science and Analytics,13,depcourseinfo,0.09918,45,3,25705
+Data Science and Analytics,14,syllabus,0.093762,45,3,25705
+Data Science and Analytics,15,systems,0.092187,45,3,25705
+Data Science and Analytics,16,data,0.090155,45,3,25705
+Data Science and Analytics,17,relevant,0.088926,45,3,25705
+Data Science and Analytics,18,learning,0.081368,45,3,25705
+Data Science and Analytics,19,intelligence,0.081036,45,3,25705
+Data Science and Analytics,20,artificial,0.079625,45,3,25705
+Electrical Engineering,1,systems,0.110469,190,2,13565
+Electrical Engineering,2,downloaded,0.109366,190,2,13565
+Electrical Engineering,3,depcourseinfo,0.109366,190,2,13565
+Electrical Engineering,4,syllabus,0.102994,190,2,13565
+Electrical Engineering,5,data,0.093864,190,2,13565
+Electrical Engineering,6,theory,0.091443,190,2,13565
+Electrical Engineering,7,processing,0.086966,190,2,13565
+Electrical Engineering,8,software,0.086531,190,2,13565
+Electrical Engineering,9,programming,0.086309,190,2,13565
+Electrical Engineering,10,introduction,0.08541,190,2,13565
+Electrical Engineering,11,networks,0.085151,190,2,13565
+Electrical Engineering,12,lab,0.083644,190,2,13565
+Electrical Engineering,13,digital,0.083644,190,2,13565
+Electrical Engineering,14,computer,0.083533,190,2,13565
+Electrical Engineering,15,artificial,0.083379,190,2,13565
+Electrical Engineering,16,intelligence,0.083379,190,2,13565
+Electrical Engineering,17,algorithms,0.083109,190,2,13565
+Electrical Engineering,18,prefix,0.083109,190,2,13565
+Electrical Engineering,19,control,0.083109,190,2,13565
+Electrical Engineering,20,learning,0.08139,190,2,13565
+Unclassified EECS,1,charset,0.530152,38,2,1134
+Unclassified EECS,2,text,0.530152,38,2,1134
+Unclassified EECS,3,utf,0.530152,38,2,1134
+Unclassified EECS,4,design,0.139755,38,2,1134
+Unclassified EECS,5,seminar,0.134808,38,2,1134
+Unclassified EECS,6,bioengineering,0.114077,38,2,1134
+Unclassified EECS,7,computer,0.114077,38,2,1134
+Unclassified EECS,8,bioinformatics,0.0884,38,2,1134
+Unclassified EECS,9,error,0.0884,38,2,1134
+Unclassified EECS,10,fundamentals,0.0884,38,2,1134
+Unclassified EECS,11,perspectives,0.0884,38,2,1134
+Unclassified EECS,12,introduction,0.0884,38,2,1134
+Unclassified EECS,13,tissue,0.0884,38,2,1134
+Unclassified EECS,14,cell,0.0884,38,2,1134
+Unclassified EECS,15,stem,0.0884,38,2,1134
+Unclassified EECS,16,thesis,0.077743,38,2,1134
+Unclassified EECS,17,complete,0.077743,38,2,1134
+Unclassified EECS,18,url,0.062722,38,2,1134
+Unclassified EECS,19,pursuing,0.062722,38,2,1134
+Unclassified EECS,20,client,0.062722,38,2,1134

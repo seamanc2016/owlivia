@@ -1,0 +1,4 @@
+selection,method,chunk_size_words,chunk_overlap_words,top_k,bm25_k1,bm25_b,rrf_k,bm25_weight,dense_weight,rerank_top_n,reranker_model,ndcg_k,ndcg,map,combined_score,num_chunks,num_qrels
+Stage 3 best combined nDCG/MAP,rrf,750,75,75,2.4,1.0,300,0.4,3.0,0,,30,0.5012156959622657,0.3540422624782823,0.427628979220274,577,181
+Stage 3 best nDCG@30,rrf,750,75,75,2.4,1.0,300,0.4,3.0,0,,30,0.5012156959622657,0.3540422624782823,0.427628979220274,577,181
+Stage 3 best MAP,rrf,750,75,75,1.8,0.95,300,0.25,4.0,0,,30,0.4963653991334814,0.3563790469006657,0.42637222301707356,577,181
