@@ -2,11 +2,24 @@ services:
   - type: web
     name: owlivia-backend
     runtime: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    plan: free
+    rootDir: backend
+    buildCommand: python -m pip install --upgrade pip && python -m pip install -r requirements-render.txt
+    startCommand: python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+
     envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.8"
+
       - key: ENVIRONMENT
         value: production
+
+      - key: RAG_GENERATION_MODE
+        value: extractive
+
+      - key: RAG_DENSE_ENABLED
+        value: "false"
+
       - key: ALLOWED_ORIGINS
         value: https://owlivia.vercel.app
-
