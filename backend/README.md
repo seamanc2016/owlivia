@@ -1,104 +1,72 @@
 # Owlivia Backend
 
-The Owlivia backend is a FastAPI service that answers FAU EECS advising questions using a connected RAG pipeline.
+The Owlivia backend is a FastAPI application that powers the STEM Graduate Advising Assistant.
 
-It retrieves relevant department documents from LanceDB, reranks the results, generates a grounded answer with Qwen, and returns supporting sources to the frontend.
+It provides:
 
-## Features
+- RAG-based advising chat
+- FAU source citations
+- Health monitoring
+- Prototype authentication
+- Feedback submission
+- LanceDB retrieval
+- Local Qwen generation
+- Lightweight Render deployment
 
-- FastAPI backend
-- LanceDB document retrieval
-- Dense and full-text search
-- Weighted reciprocal-rank fusion
-- Intent-aware reranking
-- Exact course-code matching
-- Qwen answer generation
-- Grounding checks for numbers and course codes
-- Source citations, confidence, and escalation status
-- Automated API and retrieval tests
+## Main Endpoints
 
-## Setup
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/api/health` | Checks backend and RAG status |
+| `POST` | `/api/chat` | Returns an advising answer with FAU sources |
+| `POST` | `/api/feedback` | Submits feedback |
+| `POST` | `/api/auth/login` | Prototype authentication |
+| `GET` | `/docs` | Swagger API documentation |
 
-From the repository root:
+## Local Setup
+
+From the `backend` folder:
 
 ```powershell
-cd backend
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
-Copy-Item .env.example .env
 ```
 
-## Run the Backend
+### Full Local RAG Mode
 
 ```powershell
+$env:ENVIRONMENT = "local"
+$env:RAG_GENERATION_MODE = "local"
+$env:RAG_DENSE_ENABLED = "true"
+
 python -m uvicorn app.main:app --reload
 ```
 
-The backend runs at:
-
-```text
-http://127.0.0.1:8000
-```
-
-Swagger API documentation:
+Local Swagger:
 
 ```text
 http://127.0.0.1:8000/docs
 ```
 
-For protected routes, use:
+### Lightweight Render Mode
 
-```text
-Bearer week3-prototype-token
+```powershell
+$env:ENVIRONMENT = "local"
+$env:RAG_GENERATION_MODE = "extractive"
+$env:RAG_DENSE_ENABLED = "false"
+
+python -m uvicorn app.main:app --reload
 ```
 
-## Main Routes
+This mode uses:
 
-| Method | Route | Purpose |
-|---|---|---|
-| `GET` | `/api/health` | Check backend status |
-| `GET` | `/api/auth/verify` | Verify the prototype token |
-| `POST` | `/api/chat` | Retrieve sources and answer a question |
-| `POST` | `/api/feedback` | Submit response feedback |
-
-## Example Chat Request
-
-```json
-{
-  "question": "What are the prerequisites for CAP 4630?",
-  "top_k": 5
-}
-```
-
-The response includes:
-
-- The generated answer
-- Retrieved FAU EECS sources
-- Confidence status
-- Retrieval mode
-- Escalation recommendation
-
-Example answer:
-
-```text
-The prerequisite for CAP 4630 is COP 3530.
-```
-
-## RAG Pipeline
-
-Each question goes through:
-
-1. Query classification and expansion
-2. Dense and full-text retrieval
-3. Weighted reciprocal-rank fusion
-4. Intent-aware reranking
-5. Relevant context selection
-6. Qwen answer generation
-7. Grounding validation
-8. Source and confidence formatting
-
-The backend runs fresh retrieval for every request and does not use shared global conversation state.
+- LanceDB BM25 retrieval
+- Intent-aware reranking
+- Extractive answer generation
+- No Qwen loading
+- No dense embedding model
 
 ## Run Tests
 
@@ -106,16 +74,43 @@ The backend runs fresh retrieval for every request and does not use shared globa
 python -m pytest -q
 ```
 
-Current result:
+## Render Deployment
 
-```text
-12 passed
+Render settings:
+
+| Setting | Value |
+|---|---|
+| Runtime | Python 3 |
+| Branch | `main` |
+| Root Directory | `backend` |
+| Health Check Path | `/api/health` |
+
+Build command:
+
+```bash
+python -m pip install --upgrade pip && python -m pip install -r requirements-render.txt
 ```
 
-## Current Limitations
+Start command:
 
-- Supabase authentication is not connected yet.
-- Chat history is not stored.
-- Feedback is validated but not stored.
-- The Qwen model currently runs locally.
-- The backend has not yet been deployed.
+```bash
+python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT
+```
+
+Environment variables:
+
+```text
+PYTHON_VERSION=3.12.8
+ENVIRONMENT=production
+RAG_GENERATION_MODE=extractive
+RAG_DENSE_ENABLED=false
+ALLOWED_ORIGINS=https://owlivia.vercel.app
+```
+
+## Production Links
+
+- API: `https://YOUR-RENDER-URL.onrender.com`
+- Health: `https://YOUR-RENDER-URL.onrender.com/api/health`
+- Swagger: `https://YOUR-RENDER-URL.onrender.com/docs`
+
+Do not commit API keys, access tokens, or other secrets.

@@ -1,4 +1,4 @@
-"""Grounded Qwen answer generation for the Owlivia advising assistant."""
+"""Grounded answer generation for the Owlivia advising assistant."""
 
 from dataclasses import dataclass
 from functools import lru_cache
@@ -6,8 +6,6 @@ from typing import Any
 import re
 
 import pandas as pd
-import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from app.config import settings
 
@@ -48,6 +46,17 @@ class GeneratedAnswer:
     answer: str
     used_fallback: bool
     model_name: str
+
+
+def get_generation_mode() -> str:
+    """Return the configured answer-generation mode."""
+
+    mode = settings.rag_generation_mode.strip().lower()
+
+    if mode not in {"local", "extractive"}:
+        return "extractive"
+
+    return mode
 
 
 def normalize_text(value: Any) -> str:
@@ -116,7 +125,14 @@ def first_course_code(text: str) -> str:
 
 @lru_cache(maxsize=1)
 def get_tokenizer() -> Any:
-    """Load and cache the Qwen tokenizer."""
+    """Load and cache the Qwen tokenizer for local generation."""
+
+    if get_generation_mode() != "local":
+        raise RuntimeError(
+            "The local Qwen tokenizer is disabled in extractive mode."
+        )
+
+    from transformers import AutoTokenizer
 
     tokenizer = AutoTokenizer.from_pretrained(
         settings.rag_model_name
@@ -130,7 +146,15 @@ def get_tokenizer() -> Any:
 
 @lru_cache(maxsize=1)
 def get_model() -> Any:
-    """Load and cache Qwen once per backend process."""
+    """Load and cache Qwen once per local backend process."""
+
+    if get_generation_mode() != "local":
+        raise RuntimeError(
+            "The local Qwen model is disabled in extractive mode."
+        )
+
+    import torch
+    from transformers import AutoModelForCausalLM
 
     model_kwargs: dict[str, Any] = {
         "low_cpu_mem_usage": True,
@@ -159,8 +183,10 @@ def get_model() -> Any:
     return model
 
 
-def get_model_device(model: Any) -> torch.device:
+def get_model_device(model: Any) -> Any:
     """Return the device holding the model's input parameters."""
+
+    import torch
 
     try:
         return next(model.parameters()).device
@@ -173,7 +199,20 @@ def get_model_device(model: Any) -> torch.device:
 
 
 def get_generator_summary() -> dict[str, Any]:
-    """Return model information for local verification."""
+    """Return generation information without loading disabled models."""
+
+    generation_mode = get_generation_mode()
+
+    if generation_mode != "local":
+        return {
+            "model_name": "extractive-fallback",
+            "generation_mode": generation_mode,
+            "device": "not_loaded",
+            "dtype": "not_loaded",
+            "cuda_available": False,
+        }
+
+    import torch
 
     model = get_model()
     device = get_model_device(model)
@@ -185,6 +224,7 @@ def get_generator_summary() -> dict[str, Any]:
 
     return {
         "model_name": settings.rag_model_name,
+        "generation_mode": generation_mode,
         "device": str(device),
         "dtype": dtype,
         "cuda_available": torch.cuda.is_available(),
@@ -243,7 +283,8 @@ def build_messages(
         "Science department. Use only the supplied department facts. "
         "Never invent academic requirements, course codes, or perform "
         "unsupported credit calculations. If the evidence is incomplete, "
-        "state that the department documents do not provide enough information."
+        "state that the department documents do not provide enough "
+        "information."
     )
 
     user_message = build_contextualized_prompt(
@@ -415,7 +456,7 @@ def _prepare_model_inputs(
     question: str,
     hidden_context: str,
     max_input_tokens: int,
-) -> dict[str, torch.Tensor]:
+) -> dict[str, Any]:
     """Format and tokenize the prompt using Qwen's chat template."""
 
     tokenizer = get_tokenizer()
@@ -454,6 +495,8 @@ def run_model_once(
     max_new_tokens: int,
 ) -> str:
     """Generate one deterministic answer using Qwen."""
+
+    import torch
 
     tokenizer = get_tokenizer()
     model = get_model()
@@ -511,6 +554,7 @@ def _prerequisite_fallback_answer(
 
     for title, snippet in records:
         identity_text = f"{title} {snippet}".lower()
+
         identity_compact = re.sub(
             r"[^a-z0-9]",
             "",
@@ -702,7 +746,23 @@ def generate_rag_answer(
         return GeneratedAnswer(
             answer=INSUFFICIENT_INFORMATION_MESSAGE,
             used_fallback=True,
-            model_name=settings.rag_model_name,
+            model_name=(
+                settings.rag_model_name
+                if get_generation_mode() == "local"
+                else "extractive-fallback"
+            ),
+        )
+
+    if get_generation_mode() != "local":
+        fallback = extractive_fallback_answer(
+            question=normalized_question,
+            documents=documents,
+        )
+
+        return GeneratedAnswer(
+            answer=fallback,
+            used_fallback=True,
+            model_name="extractive-fallback",
         )
 
     input_limit = (

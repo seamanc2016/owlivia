@@ -27,14 +27,18 @@ class Settings(BaseSettings):
 
     # Hybrid RAG retrieval settings
     rag_top_k: int = 10
-    rag_retrieval_pool: int = 150
-    rag_rrf_k: int = 60
-    rag_bm25_weight: float = 2.6
-    rag_dense_weight: float = 0.25
+    rag_retrieval_pool: int = 75
+    rag_rrf_k: int = 300
+    rag_bm25_weight: float = 0.4
+    rag_dense_weight: float = 3.0
     rag_max_context_chars: int = 4200
     rag_max_snippet_chars: int = 520
     rag_max_input_tokens: int = 2048
     rag_max_new_tokens: int = 220
+
+    # Runtime modes
+    rag_generation_mode: str = "local"
+    rag_dense_enabled: bool = True
 
     # Answer-generation model
     rag_model_name: str = "Qwen/Qwen2.5-1.5B-Instruct"
