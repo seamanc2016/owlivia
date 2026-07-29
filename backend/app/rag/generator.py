@@ -15,6 +15,91 @@ INSUFFICIENT_INFORMATION_MESSAGE = (
     "information to answer that."
 )
 
+OUT_OF_SCOPE_MESSAGE = (
+    "I can only help with FAU EECS graduate advising questions. "
+    "Please ask about graduate programs, requirements, courses, "
+    "forms, or department resources."
+)
+
+OTHER_UNIVERSITY_PATTERN = re.compile(
+    r"\b("
+    r"mit|harvard|stanford|yale|ucla|usc|uf\b|"
+    r"university of florida|georgia tech|carnegie mellon|cmu"
+    r")\b",
+    flags=re.IGNORECASE,
+)
+
+OUT_OF_SCOPE_TOPIC_TERMS = [
+    "weather",
+    "forecast",
+    "temperature",
+    "super bowl",
+    "football",
+    "basketball",
+    "nba",
+    "nfl",
+    "recipe",
+    "restaurant",
+    "cryptocurrency",
+    "bitcoin",
+    "stock market",
+    "tell me a joke",
+    "write me a poem",
+]
+
+GRADUATE_ADVISING_SIGNALS = [
+    "fau",
+    "florida atlantic",
+    "eecs",
+    "electrical engineering",
+    "computer science",
+    "computer engineering",
+    "graduate",
+    "grad ",
+    "master",
+    "masters",
+    "m.s.",
+    " ms ",
+    "phd",
+    "ph.d",
+    "doctoral",
+    "thesis",
+    "non-thesis",
+    "dissertation",
+    "certificate",
+    "certification",
+    "prerequisite",
+    "prerequisites",
+    "credit",
+    "credits",
+    "degree",
+    "program",
+    "worksheet",
+    "plan of study",
+    "advisor",
+    "advise",
+    "advising",
+    "chair",
+    "coordinator",
+    "director",
+    "form",
+    "application",
+    "apply",
+    "enrollment",
+    "registration",
+    "syllabus",
+    "course",
+    "courses",
+    "class",
+    "classes",
+    "department",
+    "curriculum",
+    "requirement",
+    "requirements",
+    "audit",
+    "pos",
+]
+
 
 COURSE_CODE_PATTERN = re.compile(
     r"\b(CAP|CDA|CEN|CGS|CIS|CNT|COP|COT|EEE|EEL|EGN)"
@@ -231,6 +316,52 @@ def get_generator_summary() -> dict[str, Any]:
     }
 
 
+def is_in_scope_graduate_advising_question(question: str) -> bool:
+    """Return whether a question belongs to FAU EECS graduate advising."""
+
+    cleaned = normalize_text(question).lower()
+
+    if not cleaned:
+        return False
+
+    if extract_course_codes(question):
+        return True
+
+    has_fau = any(
+        term in cleaned
+        for term in (
+            "fau",
+            "florida atlantic",
+        )
+    )
+
+    if OTHER_UNIVERSITY_PATTERN.search(cleaned) and not has_fau:
+        return False
+
+    if any(
+        term in cleaned
+        for term in OUT_OF_SCOPE_TOPIC_TERMS
+    ):
+        return False
+
+    if re.search(
+        r"\b("
+        r"write|debug|fix|implement"
+        r")\s+("
+        r"me\s+"
+        r")?(a\s+)?("
+        r"python|java|c\+\+|code|script|program"
+        r")\b",
+        cleaned,
+    ):
+        return False
+
+    return any(
+        term in cleaned
+        for term in GRADUATE_ADVISING_SIGNALS
+    )
+
+
 def build_contextualized_prompt(
     question: str,
     hidden_context: str,
@@ -242,6 +373,17 @@ def build_contextualized_prompt(
 
     return f"""
 Answer the student's question using only the department facts below.
+
+Scope rules:
+- First decide whether the student question is about FAU EECS graduate
+  advising, including graduate programs, degrees, certificates, courses,
+  prerequisites, credits, forms, and department advising resources.
+- If the question is unrelated to FAU EECS graduate advising, including
+  undergraduate-only topics, other departments, other universities, general
+  knowledge, personal advice, or chit-chat, respond exactly with:
+  "{OUT_OF_SCOPE_MESSAGE}"
+- Do not answer out-of-scope questions using department facts, even if some
+  facts mention similar words.
 
 Strict rules:
 - Only state requirements explicitly contained in the department facts.
@@ -258,7 +400,8 @@ Strict rules:
 - Do not mention fact numbers, filenames, document IDs, chunks, hidden
   context, vector search, BM25, LanceDB, RRF, or retrieval.
 
-When the facts do not contain enough information, respond exactly with:
+When the question is in scope but the facts do not contain enough
+information, respond exactly with:
 "{INSUFFICIENT_INFORMATION_MESSAGE}"
 
 Student question:
@@ -278,13 +421,19 @@ def build_messages(
     """Build the messages used by Qwen's chat template."""
 
     system_message = (
-        "You are Owlivia, an academic advising assistant for Florida "
-        "Atlantic University's Electrical Engineering and Computer "
-        "Science department. Use only the supplied department facts. "
-        "Never invent academic requirements, course codes, or perform "
-        "unsupported credit calculations. If the evidence is incomplete, "
-        "state that the department documents do not provide enough "
-        "information."
+        "You are Owlivia, a graduate academic advising assistant for "
+        "Florida Atlantic University's Electrical Engineering and Computer "
+        "Science (EECS) department. You only answer questions about FAU "
+        "EECS graduate programs, degrees, certificates, courses, "
+        "prerequisites, credits, forms, and department advising resources. "
+        "If a question is unrelated to FAU EECS graduate advising, politely "
+        "decline and say you can only help with FAU EECS graduate advising. "
+        "Do not use retrieved facts to answer out-of-scope questions, even "
+        "if they seem loosely related. Use only the supplied department "
+        "facts for in-scope questions. Never invent academic requirements, "
+        "course codes, or perform unsupported credit calculations. If an "
+        "in-scope question lacks sufficient evidence, state that the "
+        "department documents do not provide enough information."
     )
 
     user_message = build_contextualized_prompt(

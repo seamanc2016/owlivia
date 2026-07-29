@@ -107,6 +107,14 @@ RETRIEVAL_EXPANSIONS_BY_INTENT = {
         "plan of study",
         "requirements",
     ],
+    "schedule_offerings": [
+        "course schedule",
+        "course listing",
+        "graduate courses",
+        "course offerings",
+        "offered",
+        "available courses",
+    ],
     "general": [
         "computer science",
         "electrical engineering",
@@ -257,6 +265,20 @@ def classify_rag_intent(question: str) -> str:
         ]
     ):
         return "forms"
+
+    if any(
+        term in lowered
+        for term in [
+            "schedule",
+            "offering",
+            "offerings",
+            "offered",
+            "course listing",
+            "course listings",
+            "available courses",
+        ]
+    ):
+        return "schedule_offerings"
 
     if any(
         term in lowered

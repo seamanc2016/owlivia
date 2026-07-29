@@ -6,6 +6,7 @@ from fastapi.testclient import TestClient
 from app.main import app
 from app.routes import chat as chat_route
 from app.services import retrieve_advising_context
+from app.conversation.session_store import reset_session_store
 
 
 client = TestClient(app)
@@ -13,6 +14,11 @@ client = TestClient(app)
 AUTH_HEADERS = {
     "Authorization": "Bearer week3-prototype-token",
 }
+
+
+@pytest.fixture(autouse=True)
+def _reset_conversation_sessions() -> None:
+    reset_session_store()
 
 
 def test_health_check_reports_backend_online() -> None:
@@ -154,6 +160,69 @@ def test_chat_rejects_whitespace_question() -> None:
     )
 
     assert response.status_code == 422
+
+
+def test_chat_dismisses_out_of_scope_question() -> None:
+    response = client.post(
+        "/api/chat",
+        headers=AUTH_HEADERS,
+        json={"question": "What's the weather in Boca Raton?"},
+    )
+
+    assert response.status_code == 200
+
+    body = response.json()
+
+    assert "FAU EECS graduate advising" in body["answer"]
+    assert body["sources"] == []
+    assert body["escalation_recommended"] is False
+    assert body["response_type"] == "answer"
+
+
+def test_chat_asks_for_program_before_retrieval() -> None:
+    response = client.post(
+        "/api/chat",
+        headers=AUTH_HEADERS,
+        json={"question": "What are my graduation requirements?"},
+    )
+
+    assert response.status_code == 200
+
+    body = response.json()
+
+    assert body["response_type"] == "clarification"
+    assert body["pending_slots"] == ["program"]
+    assert body["sources"] == []
+    assert "graduate program" in body["answer"].lower()
+
+    follow_up = client.post(
+        "/api/chat",
+        headers=AUTH_HEADERS,
+        json={
+            "question": "MS in Computer Science",
+            "session_id": body["session_id"],
+        },
+    )
+
+    assert follow_up.status_code == 200
+    assert follow_up.json()["response_type"] == "answer"
+    assert follow_up.json()["sources"]
+
+
+def test_chat_asks_for_term_before_schedule_retrieval() -> None:
+    response = client.post(
+        "/api/chat",
+        headers=AUTH_HEADERS,
+        json={"question": "What graduate courses are available?"},
+    )
+
+    assert response.status_code == 200
+
+    body = response.json()
+
+    assert body["response_type"] == "clarification"
+    assert body["pending_slots"] == ["term"]
+    assert body["sources"] == []
 
 
 def test_chat_rejects_question_over_limit() -> None:

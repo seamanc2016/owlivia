@@ -44,6 +44,8 @@ class ChatResponse(BaseModel):
     confidence_status: Literal["low", "medium", "high"]
     retrieval_mode: Literal["placeholder", "connected"]
     escalation_recommended: bool = False
+    response_type: Literal["answer", "clarification"] = "answer"
+    pending_slots: list[str] = Field(default_factory=list)
 
 
 class AuthVerifyResponse(BaseModel):
