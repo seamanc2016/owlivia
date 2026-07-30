@@ -45,7 +45,25 @@ const ChatPage = () => {
   const { id, messages, sendMessage, status } = useChat();
   const messageTimestamps = useRef({});
 
+  const isLoading = status === "submitted" || status === "streaming";
+
+  const lastMessage = messages.at(-1);
+
+  const assistantHasStarted =
+    lastMessage?.role === "assistant" &&
+    lastMessage.parts.some(
+      (part) =>
+        part.type === "text" &&
+        part.text.trim().length > 0
+    );
+
+  const showLoadingBuffer = isLoading && !assistantHasStarted;
+
   const handleSubmit = (message) => {
+    if (isLoading) {
+      return;
+    }
+
     if (message.text.trim()) {
       sendMessage({ text: message.text });
       setInput("");
@@ -53,6 +71,10 @@ const ChatPage = () => {
   };
 
   const handleSuggestionClick = (suggestion) => {
+    if (isLoading) {
+      return;
+    }
+
     sendMessage({ text: suggestion });
   };
 
@@ -90,10 +112,72 @@ const ChatPage = () => {
                     description="How can Owlivia help you today?"
                   />
                 ) : (
-                  messages.map((message) => (
-                    <Message from={message.role} key={message.id}>
-                      <div className="flex items-end gap-x-2">
-                        {message.role === "assistant" && (
+                  <>
+                    {messages.map((message) => (
+                      <Message
+                        from={message.role}
+                        key={message.id}
+                        className={
+                          message.role === "assistant"
+                            ? "animate-in fade-in slide-in-from-bottom-2 duration-300"
+                            : ""
+                        }
+                      >
+                        <div className="flex items-end gap-x-2">
+                          {message.role === "assistant" && (
+                            <Avatar className="size-8 shrink-0">
+                              <AvatarImage
+                                src="/owlivia_avatar.png"
+                                alt="Owlivia"
+                              />
+                              <AvatarFallback>O</AvatarFallback>
+                            </Avatar>
+                          )}
+
+                          <MessageContent>
+                            {message.parts.map((part, i) => {
+                              if (part.type !== "text") {
+                                return null;
+                              }
+
+                              return (
+                                <MessageResponse key={`${message.id}-${i}`}>
+                                  {part.text}
+                                </MessageResponse>
+                              );
+                            })}
+                          </MessageContent>
+                        </div>
+
+                        <div
+                          className={
+                            message.role === "assistant"
+                              ? "mr-auto flex gap-1 text-xs text-muted-foreground"
+                              : "ml-auto flex gap-1 text-xs text-muted-foreground"
+                          }
+                        >
+                          <span className="font-medium">
+                            {message.role === "assistant" ? "Owlivia" : "You"}
+                          </span>
+
+                          <span>
+                            {messageTimestamps.current[
+                              message.id
+                            ]?.toLocaleTimeString([], {
+                              hour: "numeric",
+                              minute: "2-digit",
+                            })}
+                          </span>
+                        </div>
+                      </Message>
+                    ))}
+
+                    {showLoadingBuffer && (
+                      <Message
+                        from="assistant"
+                        className="animate-in fade-in slide-in-from-bottom-2 duration-300"
+                      >
+                        <div className="flex items-end gap-x-2">
                           <Avatar className="size-8 shrink-0">
                             <AvatarImage
                               src="/owlivia_avatar.png"
@@ -101,45 +185,31 @@ const ChatPage = () => {
                             />
                             <AvatarFallback>O</AvatarFallback>
                           </Avatar>
-                        )}
 
-                        <MessageContent>
-                          {message.parts.map((part, i) => {
-                            if (part.type !== "text") {
-                              return null;
-                            }
+                          <MessageContent>
+                            <div
+                              className="flex items-center gap-1 px-1 py-2"
+                              aria-label="Owlivia is generating a response"
+                            >
+                              <span className="size-2 animate-bounce rounded-full bg-muted-foreground [animation-delay:-0.3s]" />
+                              <span className="size-2 animate-bounce rounded-full bg-muted-foreground [animation-delay:-0.15s]" />
+                              <span className="size-2 animate-bounce rounded-full bg-muted-foreground" />
+                            </div>
+                          </MessageContent>
+                        </div>
 
-                            return (
-                              <MessageResponse key={`${message.id}-${i}`}>
-                                {part.text}
-                              </MessageResponse>
-                            );
-                          })}
-                        </MessageContent>
-                      </div>
+                        <div className="mr-auto flex gap-1 text-xs text-muted-foreground">
+                          <span className="font-medium">
+                            Owlivia
+                          </span>
 
-                      <div
-                        className={
-                          message.role === "assistant"
-                            ? "mr-auto flex gap-1 text-xs text-muted-foreground"
-                            : "ml-auto flex gap-1 text-xs text-muted-foreground"
-                        }
-                      >
-                        <span className="font-medium">
-                          {message.role === "assistant" ? "Owlivia" : "You"}
-                        </span>
-
-                        <span>
-                          {messageTimestamps.current[
-                            message.id
-                          ]?.toLocaleTimeString([], {
-                            hour: "numeric",
-                            minute: "2-digit",
-                          })}
-                        </span>
-                      </div>
-                    </Message>
-                  ))
+                          <span>
+                            Thinking...
+                          </span>
+                        </div>
+                      </Message>
+                    )}
+                  </>
                 )}
               </ConversationContent>
               {/* <ConversationDownload messages={messages} /> */}
@@ -154,6 +224,7 @@ const ChatPage = () => {
                     key={suggestion}
                     onClick={handleSuggestionClick}
                     suggestion={suggestion}
+                    disabled={isLoading}
                     className="bg-primary text-primary-foreground"
                   />
                 ))}
@@ -167,13 +238,18 @@ const ChatPage = () => {
             >
               <PromptInputTextarea
                 value={input}
-                placeholder="Type something..."
+                placeholder={
+                  isLoading
+                    ? "Owlivia is responding..."
+                    : "Type something..."
+                }
                 onChange={(e) => setInput(e.currentTarget.value)}
+                disabled={isLoading}
                 className="pr-12 min-h-0 bg-muted"
               />
               <PromptInputSubmit
-                status={status === "streaming" ? "streaming" : "ready"}
-                disabled={!input.trim()}
+                status={isLoading ? "streaming" : "ready"}
+                disabled={isLoading || !input.trim()}
                 className="absolute bottom-1 right-1 rounded-full"
               />
             </PromptInput>
