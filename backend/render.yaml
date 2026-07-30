@@ -16,7 +16,13 @@ services:
         value: production
 
       - key: RAG_GENERATION_MODE
-        value: extractive
+        value: gemini
+
+      - key: GEMINI_MODEL_NAME
+        value: gemini-3.1-flash-lite
+
+      - key: GEMINI_API_KEY
+        sync: false
 
       - key: RAG_DENSE_ENABLED
         value: "false"

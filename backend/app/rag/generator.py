@@ -143,10 +143,24 @@ def get_generation_mode() -> str:
 
     mode = settings.rag_generation_mode.strip().lower()
 
-    if mode not in {"local", "extractive"}:
+    if mode not in {"local", "extractive", "gemini"}:
         return "extractive"
 
     return mode
+
+
+def get_active_model_name() -> str:
+    """Return the model name for the active generation mode."""
+
+    mode = get_generation_mode()
+
+    if mode == "local":
+        return settings.rag_model_name
+
+    if mode == "gemini":
+        return settings.gemini_model_name
+
+    return "extractive-fallback"
 
 
 def normalize_text(value: Any) -> str:
@@ -293,6 +307,18 @@ def get_generator_summary() -> dict[str, Any]:
 
     generation_mode = get_generation_mode()
 
+    if generation_mode == "gemini":
+        return {
+            "model_name": settings.gemini_model_name,
+            "generation_mode": generation_mode,
+            "device": "google-api",
+            "dtype": "remote",
+            "cuda_available": False,
+            "api_key_configured": bool(
+                settings.resolved_gemini_api_key
+            ),
+        }
+
     if generation_mode != "local":
         return {
             "model_name": "extractive-fallback",
@@ -319,6 +345,60 @@ def get_generator_summary() -> dict[str, Any]:
         "dtype": dtype,
         "cuda_available": torch.cuda.is_available(),
     }
+
+
+@lru_cache(maxsize=1)
+def get_gemini_client() -> Any:
+    """Create and cache the Gemini API client."""
+
+    if get_generation_mode() != "gemini":
+        raise RuntimeError(
+            "The Gemini client is only available in gemini mode."
+        )
+
+    api_key = settings.resolved_gemini_api_key
+
+    if not api_key:
+        raise RuntimeError(
+            "GEMINI_API_KEY is not configured. "
+            "Add it to backend/.env or the process environment."
+        )
+
+    from google import genai
+
+    return genai.Client(api_key=api_key)
+
+
+def run_gemini_once(
+    question: str,
+    hidden_context: str,
+    max_new_tokens: int,
+) -> str:
+    """Generate one grounded answer using the Gemini API."""
+
+    messages = build_messages(
+        question=question,
+        hidden_context=hidden_context,
+    )
+
+    system_message = messages[0]["content"]
+    user_message = messages[1]["content"]
+
+    client = get_gemini_client()
+
+    response = client.models.generate_content(
+        model=settings.gemini_model_name,
+        contents=user_message,
+        config={
+            "system_instruction": system_message,
+            "temperature": 0.0,
+            "max_output_tokens": max_new_tokens,
+        },
+    )
+
+    answer_text = getattr(response, "text", None) or ""
+
+    return clean_generated_answer(answer_text)
 
 
 def is_in_scope_graduate_advising_question(question: str) -> bool:
@@ -890,6 +970,8 @@ def generate_rag_answer(
 
     normalized_question = normalize_text(question)
     normalized_context = normalize_multiline_text(hidden_context)
+    generation_mode = get_generation_mode()
+    model_name = get_active_model_name()
 
     if not normalized_question:
         raise ValueError(
@@ -900,14 +982,10 @@ def generate_rag_answer(
         return GeneratedAnswer(
             answer=INSUFFICIENT_INFORMATION_MESSAGE,
             used_fallback=True,
-            model_name=(
-                settings.rag_model_name
-                if get_generation_mode() == "local"
-                else "extractive-fallback"
-            ),
+            model_name=model_name,
         )
 
-    if get_generation_mode() != "local":
+    if generation_mode == "extractive":
         fallback = extractive_fallback_answer(
             question=normalized_question,
             documents=documents,
@@ -932,12 +1010,19 @@ def generate_rag_answer(
     )
 
     try:
-        answer = run_model_once(
-            question=normalized_question,
-            hidden_context=normalized_context,
-            max_input_tokens=input_limit,
-            max_new_tokens=output_limit,
-        )
+        if generation_mode == "gemini":
+            answer = run_gemini_once(
+                question=normalized_question,
+                hidden_context=normalized_context,
+                max_new_tokens=output_limit,
+            )
+        else:
+            answer = run_model_once(
+                question=normalized_question,
+                hidden_context=normalized_context,
+                max_input_tokens=input_limit,
+                max_new_tokens=output_limit,
+            )
     except Exception:
         fallback = extractive_fallback_answer(
             question=normalized_question,
@@ -947,7 +1032,7 @@ def generate_rag_answer(
         return GeneratedAnswer(
             answer=fallback,
             used_fallback=True,
-            model_name=settings.rag_model_name,
+            model_name=model_name,
         )
 
     if (
@@ -960,7 +1045,7 @@ def generate_rag_answer(
         return GeneratedAnswer(
             answer=answer,
             used_fallback=False,
-            model_name=settings.rag_model_name,
+            model_name=model_name,
         )
 
     shorter_context = "\n".join(
@@ -968,12 +1053,19 @@ def generate_rag_answer(
     )
 
     try:
-        retry_answer = run_model_once(
-            question=normalized_question,
-            hidden_context=shorter_context,
-            max_input_tokens=min(input_limit, 1024),
-            max_new_tokens=min(output_limit, 160),
-        )
+        if generation_mode == "gemini":
+            retry_answer = run_gemini_once(
+                question=normalized_question,
+                hidden_context=shorter_context,
+                max_new_tokens=min(output_limit, 160),
+            )
+        else:
+            retry_answer = run_model_once(
+                question=normalized_question,
+                hidden_context=shorter_context,
+                max_input_tokens=min(input_limit, 1024),
+                max_new_tokens=min(output_limit, 160),
+            )
     except Exception:
         retry_answer = ""
 
@@ -988,7 +1080,7 @@ def generate_rag_answer(
         return GeneratedAnswer(
             answer=retry_answer,
             used_fallback=False,
-            model_name=settings.rag_model_name,
+            model_name=model_name,
         )
 
     fallback = extractive_fallback_answer(
@@ -999,7 +1091,7 @@ def generate_rag_answer(
     return GeneratedAnswer(
         answer=fallback,
         used_fallback=True,
-        model_name=settings.rag_model_name,
+        model_name=model_name,
     )
 
 

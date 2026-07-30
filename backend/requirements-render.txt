@@ -6,3 +6,4 @@ httpx==0.28.1
 pandas
 numpy
 lancedb
+google-genai

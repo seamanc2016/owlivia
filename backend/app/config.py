@@ -36,12 +36,16 @@ class Settings(BaseSettings):
     rag_max_input_tokens: int = 2048
     rag_max_new_tokens: int = 220
 
-    # Runtime modes
-    rag_generation_mode: str = "local"
+    # Runtime modes: local | extractive | gemini
+    rag_generation_mode: str = "gemini"
     rag_dense_enabled: bool = True
 
-    # Answer-generation model
+    # Answer-generation model (used when rag_generation_mode=local)
     rag_model_name: str = "Qwen/Qwen2.5-1.5B-Instruct"
+
+    # Gemini settings (used when rag_generation_mode=gemini)
+    gemini_api_key: str | None = None
+    gemini_model_name: str = "gemini-3.1-flash-lite"
 
     # Existing placeholder settings retained for compatibility
     pinecone_api_key: str | None = None
@@ -51,10 +55,16 @@ class Settings(BaseSettings):
     llm_api_key: str | None = None
 
     model_config = SettingsConfigDict(
-        env_file=".env",
+        env_file=str(BACKEND_DIR / ".env"),
         env_file_encoding="utf-8",
         extra="ignore",
     )
+
+    @property
+    def resolved_gemini_api_key(self) -> str | None:
+        """Return the Gemini API key from dedicated or legacy settings."""
+
+        return self.gemini_api_key or self.llm_api_key
 
     @property
     def cors_origins(self) -> list[str]:

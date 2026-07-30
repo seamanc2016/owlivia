@@ -42,11 +42,11 @@ def health_check() -> HealthResponse:
         .lower()
     )
 
-    llm_status = (
-        "qwen-local"
-        if generation_mode == "local"
-        else "extractive"
-    )
+    llm_status = {
+        "local": "qwen-local",
+        "gemini": "gemini",
+        "extractive": "extractive",
+    }.get(generation_mode, "extractive")
 
     services = {
         "backend": "online",

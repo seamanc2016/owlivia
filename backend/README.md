@@ -34,7 +34,27 @@ python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
-### Full Local RAG Mode
+### Full Local RAG Mode (Gemini)
+
+```powershell
+# Prefer backend/.env (see .env.example). Or set:
+$env:ENVIRONMENT = "local"
+$env:RAG_GENERATION_MODE = "gemini"
+$env:RAG_DENSE_ENABLED = "true"
+$env:GEMINI_API_KEY = "your-key-here"
+$env:GEMINI_MODEL_NAME = "gemini-3.1-flash-lite"
+
+python -m uvicorn app.main:app --reload
+```
+
+This mode uses:
+
+- LanceDB hybrid retrieval
+- Intent-aware reranking / slot-filling
+- Gemini (`gemini-3.1-flash-lite`) for grounded answers
+- Extractive fallback if Gemini fails grounding checks
+
+### Full Local RAG Mode (Qwen)
 
 ```powershell
 $env:ENVIRONMENT = "local"
@@ -50,7 +70,7 @@ Local Swagger:
 http://127.0.0.1:8000/docs
 ```
 
-### Lightweight Render Mode
+### Lightweight Extractive Mode
 
 ```powershell
 $env:ENVIRONMENT = "local"
@@ -65,7 +85,7 @@ This mode uses:
 - LanceDB BM25 retrieval
 - Intent-aware reranking
 - Extractive answer generation
-- No Qwen loading
+- No Qwen / Gemini loading
 - No dense embedding model
 
 ## Run Tests
