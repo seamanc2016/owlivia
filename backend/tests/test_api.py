@@ -225,6 +225,76 @@ def test_chat_asks_for_term_before_schedule_retrieval() -> None:
     assert body["sources"] == []
 
 
+@pytest.mark.parametrize(
+    ("label", "expected_phrase"),
+    [
+        ("Graduation", "graduation"),
+        ("Forms", "form"),
+        ("Degree Requirements", "degree requirements"),
+        ("Academic Calendar", "academic calendar"),
+        ("Contact Advisor", "advis"),
+    ],
+)
+def test_chat_suggestion_buttons_clarify_first(
+    label: str,
+    expected_phrase: str,
+) -> None:
+    response = client.post(
+        "/api/chat",
+        headers=AUTH_HEADERS,
+        json={"question": label},
+    )
+
+    assert response.status_code == 200
+
+    body = response.json()
+
+    assert body["response_type"] == "clarification"
+    assert body["pending_slots"] == ["detail"]
+    assert body["sources"] == []
+    assert expected_phrase in body["answer"].lower()
+
+
+def test_chat_forms_button_then_follow_up_answers() -> None:
+    first = client.post(
+        "/api/chat",
+        headers=AUTH_HEADERS,
+        json={"question": "Forms"},
+    )
+
+    assert first.status_code == 200
+    assert first.json()["response_type"] == "clarification"
+
+    follow_up = client.post(
+        "/api/chat",
+        headers=AUTH_HEADERS,
+        json={
+            "question": "plan of study",
+            "session_id": first.json()["session_id"],
+        },
+    )
+
+    assert follow_up.status_code == 200
+    assert follow_up.json()["response_type"] == "answer"
+
+
+def test_chat_short_keyword_clarifies_first() -> None:
+    response = client.post(
+        "/api/chat",
+        headers=AUTH_HEADERS,
+        json={"question": "Courses"},
+    )
+
+    assert response.status_code == 200
+
+    body = response.json()
+
+    assert body["response_type"] == "clarification"
+    assert body["pending_slots"] == ["detail"]
+    assert body["sources"] == []
+    assert "courses" in body["answer"].lower()
+
+
 def test_chat_rejects_question_over_limit() -> None:
     response = client.post(
         "/api/chat",

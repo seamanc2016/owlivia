@@ -98,6 +98,11 @@ GRADUATE_ADVISING_SIGNALS = [
     "requirements",
     "audit",
     "pos",
+    "graduation",
+    "calendar",
+    "academic calendar",
+    "forms",
+    "contact advisor",
 ]
 
 

@@ -13,9 +13,75 @@ Topic = Literal[
     "schedule_offerings",
     "certificate_requirements",
     "course_recommendation",
+    "graduation",
+    "forms",
+    "academic_calendar",
+    "contact_advisor",
 ]
 
 RouteAction = Literal["clarify", "retrieve"]
+
+# Exact labels sent by the frontend suggestion buttons.
+CONTROLLED_STARTERS: dict[str, Topic] = {
+    "graduation": "graduation",
+    "forms": "forms",
+    "degree requirements": "degree_requirements",
+    "academic calendar": "academic_calendar",
+    "contact advisor": "contact_advisor",
+}
+
+# Bare/short advising keywords that need more detail before retrieval.
+SHORT_KEYWORD_TOPICS: dict[str, Topic] = {
+    "courses": "course_recommendation",
+    "course": "course_recommendation",
+    "classes": "course_recommendation",
+    "class": "course_recommendation",
+    "syllabus": "course_recommendation",
+    "syllabi": "course_recommendation",
+    "prerequisites": "course_recommendation",
+    "prerequisite": "course_recommendation",
+    "credits": "degree_requirements",
+    "credit": "degree_requirements",
+    "thesis": "degree_requirements",
+    "non-thesis": "degree_requirements",
+    "non thesis": "degree_requirements",
+    "requirements": "degree_requirements",
+    "requirement": "degree_requirements",
+    "program": "degree_requirements",
+    "programs": "degree_requirements",
+    "degree": "degree_requirements",
+    "degrees": "degree_requirements",
+    "masters": "degree_requirements",
+    "master": "degree_requirements",
+    "phd": "degree_requirements",
+    "certificate": "certificate_requirements",
+    "certificates": "certificate_requirements",
+    "schedule": "schedule_offerings",
+    "schedules": "schedule_offerings",
+    "offerings": "schedule_offerings",
+    "registration": "academic_calendar",
+    "deadline": "academic_calendar",
+    "deadlines": "academic_calendar",
+    "calendar": "academic_calendar",
+    "advisor": "contact_advisor",
+    "advising": "contact_advisor",
+    "advisors": "contact_advisor",
+    "worksheet": "forms",
+    "worksheets": "forms",
+    "application": "forms",
+    "applications": "forms",
+    "form": "forms",
+}
+
+TOPIC_RETRIEVAL_HINTS: dict[str, str] = {
+    "graduation": "graduate graduation requirements deadlines clearance",
+    "forms": "graduate forms applications worksheets",
+    "degree_requirements": "graduate degree requirements",
+    "academic_calendar": "academic calendar registration deadlines",
+    "contact_advisor": "graduate advisor contact department advising",
+    "schedule_offerings": "graduate course offerings schedule",
+    "course_recommendation": "graduate course recommendations",
+}
 
 MS_PROGRAMS = {
     "MS Computer Science",
@@ -229,6 +295,94 @@ class RouteDecision:
     updated_session: ConversationSession | None = None
 
 
+def match_controlled_starter(question: str) -> Topic | None:
+    """Return the topic when the message is an exact suggestion-button label."""
+
+    cleaned = normalize_text(question).lower()
+
+    return CONTROLLED_STARTERS.get(cleaned)
+
+
+def match_short_keyword_topic(question: str) -> Topic | None:
+    """Return a topic for brief keyword-only advising questions."""
+
+    cleaned = normalize_text(question).lower().rstrip("?.!")
+
+    if not cleaned:
+        return None
+
+    words = cleaned.split()
+
+    # Longer questions are handled by normal slot filling / retrieval.
+    if len(words) > 3:
+        return None
+
+    if extract_course_codes(question):
+        return None
+
+    if extract_schedule_term(question):
+        return None
+
+    if extract_program(question):
+        return None
+
+    if extract_certificate(question):
+        return None
+
+    if cleaned in CONTROLLED_STARTERS:
+        return CONTROLLED_STARTERS[cleaned]
+
+    if cleaned in SHORT_KEYWORD_TOPICS:
+        return SHORT_KEYWORD_TOPICS[cleaned]
+
+    # Allow light fillers such as "about courses" or "graduate courses".
+    fillers = {
+        "about",
+        "my",
+        "the",
+        "a",
+        "an",
+        "for",
+        "graduate",
+        "grad",
+        "eecs",
+        "fau",
+        "info",
+        "information",
+        "help",
+        "with",
+    }
+
+    content_words = [
+        word
+        for word in words
+        if word not in fillers
+    ]
+
+    if len(content_words) == 1:
+        return SHORT_KEYWORD_TOPICS.get(content_words[0])
+
+    if len(content_words) == 2:
+        joined = " ".join(content_words)
+
+        if joined in SHORT_KEYWORD_TOPICS:
+            return SHORT_KEYWORD_TOPICS[joined]
+
+        if joined in CONTROLLED_STARTERS:
+            return CONTROLLED_STARTERS[joined]
+
+    return None
+
+
+def is_controlled_conversation_starter(question: str) -> bool:
+    """Return whether the message is a button label or short keyword starter."""
+
+    return (
+        match_controlled_starter(question) is not None
+        or match_short_keyword_topic(question) is not None
+    )
+
+
 def route_conversation_turn(
     question: str,
     session: ConversationSession,
@@ -240,11 +394,62 @@ def route_conversation_turn(
     if not normalized_question:
         raise ValueError("The conversation question cannot be empty.")
 
+    controlled_topic = match_controlled_starter(normalized_question)
+    short_keyword_topic = match_short_keyword_topic(normalized_question)
+
+    # Suggestion buttons always restart clarification.
+    # Bare keywords only do so on a fresh turn, not as a follow-up answer.
+    starter_topic = controlled_topic
+
+    if (
+        starter_topic is None
+        and short_keyword_topic is not None
+        and "detail" not in session.pending_slots
+    ):
+        starter_topic = short_keyword_topic
+
+    if starter_topic is not None:
+        updated_session = ConversationSession(
+            topic=starter_topic,
+            slots=SlotValues(),
+            pending_slots=["detail"],
+        )
+
+        return RouteDecision(
+            action="clarify",
+            retrieval_query="",
+            clarification=build_clarification(
+                topic=starter_topic,
+                missing_slots=["detail"],
+                slots=SlotValues(),
+            ),
+            pending_slots=["detail"],
+            topic=starter_topic,
+            updated_session=updated_session,
+        )
+
     extracted = extract_slots_from_text(
         normalized_question,
         pending_slots=session.pending_slots,
+        topic=session.topic,
     )
     merged_slots = merge_slot_values(session.slots, extracted)
+
+    # After a starter, any non-starter follow-up is enough to retrieve.
+    if (
+        session.topic is not None
+        and "detail" in session.pending_slots
+        and merged_slots.detail
+    ):
+        return RouteDecision(
+            action="retrieve",
+            retrieval_query=build_retrieval_query(
+                normalized_question,
+                merged_slots,
+                topic=session.topic,
+            ),
+            updated_session=ConversationSession(),
+        )
 
     if should_use_direct_retrieval(
         normalized_question,
@@ -311,6 +516,7 @@ def route_conversation_turn(
 def extract_slots_from_text(
     text: str,
     pending_slots: list[str] | None = None,
+    topic: str | None = None,
 ) -> SlotValues:
     """Extract known advising slots from one user message."""
 
@@ -326,6 +532,7 @@ def extract_slots_from_text(
     start_term = extract_start_term(cleaned)
     term = extract_schedule_term(cleaned)
     certificate = extract_certificate(cleaned)
+    detail = None
 
     if "start_term" in pending and not start_term:
         start_term = extract_schedule_term(cleaned) or extract_start_term(
@@ -346,12 +553,27 @@ def extract_slots_from_text(
     if "certificate" in pending and not certificate:
         certificate = extract_certificate(cleaned)
 
+    if "detail" in pending and match_controlled_starter(cleaned) is None:
+        detail = cleaned
+
+        if topic == "degree_requirements" and not program:
+            program = extract_program(cleaned) or infer_program_from_reply(
+                cleaned
+            )
+
+        if topic in {"schedule_offerings", "academic_calendar"} and not term:
+            term = extract_schedule_term(cleaned)
+
+        if topic == "certificate_requirements" and not certificate:
+            certificate = extract_certificate(cleaned)
+
     return SlotValues(
         program=program,
         track=track,
         start_term=start_term,
         term=term,
         certificate=certificate,
+        detail=detail,
     )
 
 
@@ -367,6 +589,7 @@ def merge_slot_values(
         start_term=new_values.start_term or existing.start_term,
         term=new_values.term or existing.term,
         certificate=new_values.certificate or existing.certificate,
+        detail=new_values.detail or existing.detail,
     )
 
 
@@ -375,6 +598,12 @@ def should_use_direct_retrieval(
     slots: SlotValues,
 ) -> bool:
     """Return whether the question is specific enough to skip slot filling."""
+
+    if match_controlled_starter(question) is not None:
+        return False
+
+    if match_short_keyword_topic(question) is not None:
+        return False
 
     lowered = question.lower()
     course_codes = extract_course_codes(question)
@@ -422,6 +651,11 @@ def detect_topic(
 
     lowered = question.lower()
 
+    starter_topic = match_controlled_starter(question)
+
+    if starter_topic is not None:
+        return starter_topic
+
     if is_schedule_question(lowered):
         return "schedule_offerings"
 
@@ -430,6 +664,12 @@ def detect_topic(
 
     if any(term in lowered for term in DEGREE_TERMS):
         return "degree_requirements"
+
+    if "graduation" in lowered:
+        return "graduation"
+
+    if "academic calendar" in lowered or "calendar" in lowered:
+        return "academic_calendar"
 
     if any(term in lowered for term in RECOMMENDATION_TERMS):
         return "course_recommendation"
@@ -474,8 +714,19 @@ def get_missing_slots(
 
     missing: list[str] = []
 
+    if topic in {
+        "graduation",
+        "forms",
+        "academic_calendar",
+        "contact_advisor",
+    }:
+        if not slots.detail:
+            missing.append("detail")
+
+        return missing
+
     if topic == "degree_requirements":
-        if not slots.program:
+        if not slots.program and not slots.detail:
             missing.append("program")
 
     elif topic == "schedule_offerings":
@@ -504,6 +755,63 @@ def build_clarification(
     """Build a user-facing follow-up question for missing slots."""
 
     next_slot = missing_slots[0]
+
+    if next_slot == "detail":
+        if topic == "graduation":
+            return (
+                "What about graduation are you looking for? For example: "
+                "graduation requirements, applying to graduate, deadlines, "
+                "or clearance steps."
+            )
+
+        if topic == "forms":
+            return (
+                "Which form or paperwork are you looking for? For example: "
+                "plan of study, program worksheet, degree audit, or a "
+                "graduate application."
+            )
+
+        if topic == "degree_requirements":
+            return (
+                "Which program's degree requirements do you need, and what "
+                "specifically are you looking for? For example: MS in "
+                "Computer Science credit totals, thesis vs non-thesis, or "
+                "required courses."
+            )
+
+        if topic == "academic_calendar":
+            return (
+                "What academic calendar information do you need? For "
+                "example: registration dates, add/drop deadlines, "
+                "graduation ceremony dates, or the current semester timeline."
+            )
+
+        if topic == "contact_advisor":
+            return (
+                "Who are you trying to reach, or what advising help do you "
+                "need? For example: graduate advisor contact info, a program "
+                "coordinator, or the department chair."
+            )
+
+        if topic == "course_recommendation":
+            return (
+                "What about courses are you looking for? For example: "
+                "courses offered in a specific term, prerequisites for a "
+                "course code, or recommendations for your graduate program."
+            )
+
+        if topic == "schedule_offerings":
+            return (
+                "Which term's course schedule are you asking about? Please "
+                "include the season and year, such as Fall 2025 or Spring 2026."
+            )
+
+        if topic == "certificate_requirements":
+            return (
+                "Which graduate certificate are you asking about, and what "
+                "do you need to know? For example: Artificial Intelligence "
+                "certificate requirements or required courses."
+            )
 
     if topic == "degree_requirements":
         if next_slot == "program":
@@ -550,6 +858,9 @@ def build_retrieval_query(
 
     parts = [question]
 
+    if slots.detail and slots.detail.lower() != question.lower():
+        parts.append(slots.detail)
+
     if slots.program:
         parts.append(slots.program)
 
@@ -565,11 +876,8 @@ def build_retrieval_query(
     if slots.certificate:
         parts.append(slots.certificate)
 
-    if topic == "schedule_offerings":
-        parts.append("graduate course offerings schedule")
-
-    if topic == "course_recommendation":
-        parts.append("graduate course recommendations")
+    if topic and topic in TOPIC_RETRIEVAL_HINTS:
+        parts.append(TOPIC_RETRIEVAL_HINTS[topic])
 
     deduped: list[str] = []
 

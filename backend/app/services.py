@@ -11,7 +11,10 @@ from app.conversation.session_store import (
     get_or_create_session,
     save_conversation_session,
 )
-from app.conversation.slot_router import route_conversation_turn
+from app.conversation.slot_router import (
+    is_controlled_conversation_starter,
+    route_conversation_turn,
+)
 from app.rag import generator as rag_generator
 from app.rag.reranker import retrieve_and_rerank
 from app.schemas import ChatRequest, ChatResponse, Source
@@ -288,7 +291,7 @@ def process_chat_request(
 
     if not rag_generator.is_in_scope_graduate_advising_question(
         request.question
-    ):
+    ) and not is_controlled_conversation_starter(request.question):
         session_id = request.session_id or new_id()
         clear_conversation_session(session_id)
 

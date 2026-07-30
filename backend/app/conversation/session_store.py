@@ -13,6 +13,7 @@ class SlotValues:
     start_term: str | None = None
     term: str | None = None
     certificate: str | None = None
+    detail: str | None = None
 
 
 @dataclass
