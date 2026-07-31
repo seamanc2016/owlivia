@@ -113,64 +113,73 @@ const ChatPage = () => {
                   />
                 ) : (
                   <>
-                    {messages.map((message) => (
-                      <Message
-                        from={message.role}
-                        key={message.id}
-                        className={
-                          message.role === "assistant"
-                            ? "animate-in fade-in slide-in-from-bottom-2 duration-300"
-                            : ""
-                        }
-                      >
-                        <div className="flex items-end gap-x-2">
-                          {message.role === "assistant" && (
-                            <Avatar className="size-8 shrink-0">
-                              <AvatarImage
-                                src="/owlivia_avatar.png"
-                                alt="Owlivia"
-                              />
-                              <AvatarFallback>O</AvatarFallback>
-                            </Avatar>
-                          )}
+                    {messages.map((message) => {
+                      const textParts = message.parts.filter(
+                        (part) =>
+                          part.type === "text" &&
+                          part.text.trim().length > 0
+                      );
 
-                          <MessageContent>
-                            {message.parts.map((part, i) => {
-                              if (part.type !== "text") {
-                                return null;
-                              }
+                      if (
+                        message.role === "assistant" &&
+                        textParts.length === 0
+                      ) {
+                        return null;
+                      }
 
-                              return (
+                      return (
+                        <Message
+                          from={message.role}
+                          key={message.id}
+                          className={
+                            message.role === "assistant"
+                              ? "animate-in fade-in slide-in-from-bottom-2 duration-300"
+                              : ""
+                          }
+                        >
+                          <div className="flex items-end gap-x-2">
+                            {message.role === "assistant" && (
+                              <Avatar className="size-8 shrink-0">
+                                <AvatarImage
+                                  src="/owlivia_avatar.png"
+                                  alt="Owlivia"
+                                />
+                                <AvatarFallback>O</AvatarFallback>
+                              </Avatar>
+                            )}
+
+                            <MessageContent>
+                              {textParts.map((part, i) => (
                                 <MessageResponse key={`${message.id}-${i}`}>
                                   {part.text}
                                 </MessageResponse>
-                              );
-                            })}
-                          </MessageContent>
-                        </div>
+                              ))}
+                            </MessageContent>
+                          </div>
 
-                        <div
-                          className={
-                            message.role === "assistant"
-                              ? "mr-auto flex gap-1 text-xs text-muted-foreground"
-                              : "ml-auto flex gap-1 text-xs text-muted-foreground"
-                          }
-                        >
-                          <span className="font-medium">
-                            {message.role === "assistant" ? "Owlivia" : "You"}
-                          </span>
+                          <div
+                            className={
+                              message.role === "assistant"
+                                ? "mr-auto flex gap-1 text-xs text-muted-foreground"
+                                : "ml-auto flex gap-1 text-xs text-muted-foreground"
+                            }
+                          >
+                            <span className="font-medium">
+                              {message.role === "assistant" ? "Owlivia" : "You"}
+                            </span>
 
-                          <span>
-                            {messageTimestamps.current[
-                              message.id
-                            ]?.toLocaleTimeString([], {
-                              hour: "numeric",
-                              minute: "2-digit",
-                            })}
-                          </span>
-                        </div>
-                      </Message>
-                    ))}
+                            <span>
+                              {messageTimestamps.current[
+                                message.id
+                              ]?.toLocaleTimeString([], {
+                                hour: "numeric",
+                                minute: "2-digit",
+                              })}
+                            </span>
+                          </div>
+                        </Message>
+                      );
+                    })}
 
                     {showLoadingBuffer && (
                       <Message

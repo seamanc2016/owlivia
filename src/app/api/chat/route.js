@@ -1,5 +1,10 @@
 import { google } from "@ai-sdk/google";
-import { convertToModelMessages, streamText } from "ai";
+import { tavilySearch } from '@tavily/ai-sdk';
+import {
+  convertToModelMessages,
+  stepCountIs,
+  streamText,
+} from "ai";
 
 export async function POST(request) {
   try {
@@ -56,6 +61,17 @@ export async function POST(request) {
         (for example a course code, program name, or term with year),
         answer normally without forcing an extra clarification.
       `,
+
+      tools: {
+        search_fau: tavilySearch({
+          searchDepth: "basic",
+          maxResults: 3,
+          includeDomains: ["fau.edu"],
+          includeAnswer: false,
+        }),
+      },
+
+      stopWhen: stepCountIs(3),
 
       messages: await convertToModelMessages(messages),
     });
