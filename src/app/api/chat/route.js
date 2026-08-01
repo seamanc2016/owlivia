@@ -6,6 +6,16 @@ import {
   streamText,
 } from "ai";
 
+//Setting current date
+const currentDate = new Date().toLocaleDateString("en-US", {
+  timeZone: "America/New_York",
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+
+
 export async function POST(request) {
   try {
     const body = await request.json();
@@ -16,6 +26,10 @@ export async function POST(request) {
 
       system: `
         You are Owlivia, an FAU STEM graduate academic advising assistant.
+
+        The current date is ${currentDate}.
+        Use this date when interpreting words such as "today," "tomorrow,"
+        "this semester," "next semester," and "currently."
 
         Give clear, concise, and helpful answers.
 
@@ -60,6 +74,11 @@ export async function POST(request) {
         If the user already asks a specific question with enough detail
         (for example a course code, program name, or term with year),
         answer normally without forcing an extra clarification.
+
+        Any questions that have nothing to do with FAU or any advising concern
+        related to it, should be responded to with any variation of this: "As 
+        an advising assistant for FAU, I can only answer questions related to
+        any concerns related to that." 
       `,
 
       tools: {
