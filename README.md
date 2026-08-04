@@ -24,6 +24,8 @@ Owlivia is an AI-powered advising assistant that provides students with a conver
 
 ## How It Works
 
+![Owlivia Component Diagram](./public/owlivia_component_diagram.png)
+
 1. A student submits a question through the Owlivia chat interface.
 2. The frontend sends the question to the backend server.
 3. The system searches FAU resources for relevant information.
