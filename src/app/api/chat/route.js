@@ -82,7 +82,8 @@ export async function POST(request) {
         
         Use the retrieved search results to answer the question, but do not
         include a Sources section or manually list source URLs. The interface
-        displays the retrieved sources separately. 
+        displays the retrieved sources separately. Only reference a link in your
+        answer if you've used the tavilySearch tool and it's relevant to the context.
       `,
 
       tools: {
