@@ -70,7 +70,7 @@ npm run dev
 Open the application at:
 
 ```text
-http://localhost:8000
+http://localhost:3000
 ```
 
 ## Scope and Limitations
