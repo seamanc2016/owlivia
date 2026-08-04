@@ -78,13 +78,17 @@ export async function POST(request) {
         Any questions that have nothing to do with FAU or any advising concern
         related to it, should be responded to with any variation of this: "As 
         an advising assistant for FAU, I can only answer questions related to
-        any concerns related to that." 
+        any concerns related to that.
+        
+        Use the retrieved search results to answer the question, but do not
+        include a Sources section or manually list source URLs. The interface
+        displays the retrieved sources separately. 
       `,
 
       tools: {
         search_fau: tavilySearch({
           searchDepth: "basic",
-          maxResults: 3,
+          maxResults: 10,
           includeDomains: ["fau.edu"],
           includeAnswer: false,
         }),
@@ -93,6 +97,34 @@ export async function POST(request) {
       stopWhen: stepCountIs(3),
 
       messages: await convertToModelMessages(messages),
+
+      onStepFinish: ({ toolResults }) => {
+        for (const toolResult of toolResults) {
+          if (toolResult.toolName !== "search_fau") {
+            continue;
+          }
+
+          const output = toolResult.output;
+          const searchResults = output?.results ?? output;
+
+          console.log();
+          console.log("========== TAVILY RESULTS ==========");
+
+          if (!Array.isArray(searchResults)) {
+            console.dir(output, { depth: null });
+          } else {
+            searchResults.forEach((searchResult, index) => {
+              console.log(
+                `${index + 1}. ${searchResult.title ?? "Untitled"}`
+              );
+              console.log(`   ${searchResult.url}`);
+            });
+          }
+
+          console.log("====================================");
+          console.log();
+        }
+      },
     });
 
     return result.toUIMessageStreamResponse();

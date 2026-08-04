@@ -1,6 +1,12 @@
 "use client";
 
 import {
+  Source,
+  Sources,
+  SourcesContent,
+  SourcesTrigger,
+} from "@/components/ai-elements/sources";
+import {
   Conversation,
   ConversationContent,
   ConversationDownload,
@@ -39,6 +45,56 @@ const suggestions = [
   "Academic Calendar",
   "Contact Advisor"
 ];
+
+const getTavilyResults = (message) => {
+  const results = [];
+
+  for (const part of message.parts ?? []) {
+    if (
+      part.type !== "tool-search_fau" ||
+      part.state !== "output-available"
+    ) {
+      continue;
+    }
+
+    const output = part.output;
+
+    if (Array.isArray(output)) {
+      results.push(...output);
+      continue;
+    }
+
+    if (Array.isArray(output?.results)) {
+      results.push(...output.results);
+    }
+  }
+
+  return results;
+};
+
+const TavilySources = ({ results }) => {
+  if (results.length === 0) {
+    return null;
+  }
+
+  return (
+    <Sources className="mt-1">
+      <SourcesTrigger count={results.length} />
+
+      <SourcesContent>
+        {results.map((result, index) => (
+          <Source
+            key={`${result.url}-${index}`}
+            href={result.url}
+            title={result.title ?? `Source ${index + 1}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          />
+        ))}
+      </SourcesContent>
+    </Sources>
+  );
+};
 
 const ChatPage = () => {
   const [input, setInput] = useState("");
@@ -120,6 +176,8 @@ const ChatPage = () => {
                           part.text.trim().length > 0
                       );
 
+                      const tavilyResults = getTavilyResults(message);
+
                       if (
                         message.role === "assistant" &&
                         textParts.length === 0
@@ -160,22 +218,29 @@ const ChatPage = () => {
                           <div
                             className={
                               message.role === "assistant"
-                                ? "mr-auto flex gap-1 text-xs text-muted-foreground"
-                                : "ml-auto flex gap-1 text-xs text-muted-foreground"
+                                ? "mr-auto flex items-start gap-2 text-xs text-muted-foreground"
+                                : "ml-auto flex items-center gap-1 text-xs text-muted-foreground"
                             }
                           >
-                            <span className="font-medium">
-                              {message.role === "assistant" ? "Owlivia" : "You"}
-                            </span>
+                            <div className="flex shrink-0 items-center gap-1 pt-1">
+                              <span className="font-medium">
+                                {message.role === "assistant" ? "Owlivia" : "You"}
+                              </span>
 
-                            <span>
-                              {messageTimestamps.current[
-                                message.id
-                              ]?.toLocaleTimeString([], {
-                                hour: "numeric",
-                                minute: "2-digit",
-                              })}
-                            </span>
+                              <span>
+                                {messageTimestamps.current[
+                                  message.id
+                                ]?.toLocaleTimeString([], {
+                                  hour: "numeric",
+                                  minute: "2-digit",
+                                })}
+                              </span>
+                            </div>
+
+                            {message.role === "assistant" &&
+                              tavilyResults.length > 0 && (
+                                <TavilySources results={tavilyResults} />
+                              )}
                           </div>
                         </Message>
                       );

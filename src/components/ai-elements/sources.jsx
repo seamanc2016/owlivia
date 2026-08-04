@@ -12,7 +12,7 @@ export const Sources = ({
   ...props
 }) => (
   <Collapsible
-    className={cn("not-prose mb-4 text-primary text-xs", className)}
+    className={cn("not-prose text-primary text-xs", className)}
     {...props} />
 );
 
