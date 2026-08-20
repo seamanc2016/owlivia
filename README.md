@@ -12,6 +12,8 @@ Owlivia is an AI-powered advising assistant that provides students with a conver
 
 ![Owlivia Conversation Demo](./public/owlivia_demo_conversation.gif)
 
+**NOTE:** Owlivia was primarily targeted toward STEM Graduate students at FAU. Additionally, the application currently uses a simulated authentication process. It currently accepts any email ending in @fau.edu; the password can be anything.
+
 ## Features
 
 - Conversational advising through a chatbot interface
@@ -74,11 +76,6 @@ Open the application at:
 ```text
 http://localhost:3000
 ```
-
-## Scope and Limitations
-
-Owlivia was primarily targeted toward STEM Graduate students at FAU. Additionally, the application currently uses a simulated authentication process.
-
 
 ## Disclaimer
 
